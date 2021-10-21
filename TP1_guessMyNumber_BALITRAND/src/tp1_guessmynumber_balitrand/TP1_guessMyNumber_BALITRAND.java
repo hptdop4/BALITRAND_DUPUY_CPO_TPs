@@ -42,7 +42,7 @@ public class TP1_guessMyNumber_BALITRAND {
     int k=1;
     int niveau=0;
     
-    System.out.println("Bonjour, choisissez le niveau: \n 1) Facile \n 2) Moyen \n 3) Difficile \n 4) Cauchemar");
+    System.out.println("Bonjour, choisissez le niveau: \n 1) Facile \n 2) Moyen \n 3) Difficile \n ");
     niveau=sc.nextInt();
     
     
