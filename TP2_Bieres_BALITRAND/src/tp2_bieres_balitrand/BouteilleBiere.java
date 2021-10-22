@@ -22,7 +22,7 @@ public class BouteilleBiere {
    nom = unNom; 
    degreAlcool = unDegre; 
    brasserie = uneBrasserie; 
-   ouverte = false; 
+   ouverte = true; 
 }
    
    

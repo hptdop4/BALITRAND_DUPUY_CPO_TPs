@@ -43,7 +43,7 @@ public class TP2_Bieres_BALITRAND {
         
         
         verif=uneBiere.Decapsuler();
-        
+        System.out.println(verif);
     }
     
 }
