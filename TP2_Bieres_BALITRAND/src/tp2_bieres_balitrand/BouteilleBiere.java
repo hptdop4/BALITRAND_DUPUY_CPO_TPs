@@ -17,6 +17,8 @@ public class BouteilleBiere {
    boolean ouverte;
    
    
+   //methode pour renvoyer une suite de caracteres quand on veut lire l'objet 
+   
    @Override 
     public String toString() { 
     String chaine_a_retourner; 
@@ -26,6 +28,9 @@ public class BouteilleBiere {
     return chaine_a_retourner ;  
 }
    
+    
+   //methode pour definir rapidement un nouvel objet de classe  BouteilleBiere
+    
    public BouteilleBiere(String unNom, double unDegre, String uneBrasserie) { 
  
    nom = unNom; 
@@ -41,6 +46,10 @@ public class BouteilleBiere {
    System.out.println("Bouteille de " + nom +" (" + degreAlcool + " degres) \nBrasserie : " + brasserie ) ; 
    
 }
+   
+   
+   
+   //methode qui donne ouverte=true ou renvoie un message d erreur si elle est deja ouverte
    
    public boolean Decapsuler() { 
   

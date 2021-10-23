@@ -39,6 +39,7 @@ public class TP2_Bieres_BALITRAND {
        
         Biere3.lireEtiquette();
         
+        //autre lecture avec toString
         System.out.println(Biere3) ;
         
          BouteilleBiere Biere4 = new BouteilleBiere("Soixantaine", 6.1 ,"Moulin") ;
