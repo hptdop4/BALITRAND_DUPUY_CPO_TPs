@@ -17,6 +17,15 @@ public class BouteilleBiere {
    boolean ouverte;
    
    
+   @Override 
+    public String toString() { 
+    String chaine_a_retourner; 
+    chaine_a_retourner = nom + " (" + degreAlcool + " degrés) Ouverte ? ";   
+    if (ouverte == true ) chaine_a_retourner += "oui" ; 
+    else chaine_a_retourner += "non" ; 
+    return chaine_a_retourner ;  
+}
+   
    public BouteilleBiere(String unNom, double unDegre, String uneBrasserie) { 
  
    nom = unNom; 

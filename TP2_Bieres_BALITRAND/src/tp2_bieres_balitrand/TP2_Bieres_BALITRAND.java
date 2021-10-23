@@ -20,10 +20,16 @@ public class TP2_Bieres_BALITRAND {
        BouteilleBiere uneBiere = new BouteilleBiere("Cuvée des trolls", 7.0 ,"Dubuisson") ; 
         
        
-        uneBiere.lireEtiquette();
+       //methode par le toString()
+       System.out.println(uneBiere) ;
+       
+        
+       //methode lire etiquette 
+       uneBiere.lireEtiquette();
         
         
-        
+        //definition 4 autres bouteilles par methode lire etiqquette
+       
         BouteilleBiere autreBiere = new BouteilleBiere("Leffe", 6.6 ,"Abbaye de Leffe") ;
        
         autreBiere.lireEtiquette();
@@ -33,6 +39,8 @@ public class TP2_Bieres_BALITRAND {
        
         Biere3.lireEtiquette();
         
+        System.out.println(Biere3) ;
+        
          BouteilleBiere Biere4 = new BouteilleBiere("Soixantaine", 6.1 ,"Moulin") ;
        
         Biere4.lireEtiquette();
@@ -41,6 +49,8 @@ public class TP2_Bieres_BALITRAND {
        
         Biere5.lireEtiquette();
         
+        
+        //test de la methode decapsuler rend ouverte= true ou un message erreur si deja ouverte
         
         verif=uneBiere.Decapsuler();
         System.out.println(verif);
