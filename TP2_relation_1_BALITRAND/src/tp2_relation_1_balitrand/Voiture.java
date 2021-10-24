@@ -17,6 +17,7 @@ public class Voiture {
     int PuissanceCV;
     String Modele;
     String Marque;
+    Personne proprietaire ;
     
     
     public Voiture(String modele, String marque, int puissance) { 
@@ -24,7 +25,7 @@ public class Voiture {
       PuissanceCV=puissance; 
       Modele=modele;
       Marque=marque;
-      
+      proprietaire=null;
     }
     
     @Override 
