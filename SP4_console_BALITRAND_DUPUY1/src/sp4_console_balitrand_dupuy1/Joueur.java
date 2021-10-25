@@ -13,7 +13,7 @@ public class Joueur {
     String Nom;
     String Couleur;
     Jeton [] ListeJetons = new Jeton[21];
-    int nombreJetonsRestants;
+    int nombreJetonsRestants=21;
     
     //methode pour definir rapidement un nouvel objet de classe  Joueur
     
@@ -27,4 +27,16 @@ public class Joueur {
         Couleur=UneCouleur;
     }
     
+    public boolean ajouterJeton(Jeton j){
+        
+        if(nombreJetonsRestants==21){
+            
+           return false; 
+    }
+        
+        else {
+            ListeJetons[nombreJetonsRestants]=j;
+            return true;
+        }
+    }
 }
