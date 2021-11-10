@@ -26,7 +26,7 @@ public class TP2_convertisseurObjet_BALITRAND {
       Scanner sc = new Scanner(System.in);  
         
         
-       Convertisseur premier = new Convertisseur(3); 
+       Convertisseur premier = new Convertisseur(); 
         
         
         
@@ -38,42 +38,42 @@ public class TP2_convertisseurObjet_BALITRAND {
         choix=sc.nextInt();
         
         if (choix==1){
-        variable2=CelciusVersKelvin(variable);
+        variable2=premier.CelciusVersKelvin(variable);
         System.out.println(variable+" degres Celcius est egal à "+ variable2+" degres Kelvin." );
         
     }
         else if (choix==2){
-        variable2=KelvinVersCelcius(variable);
+        variable2=premier.KelvinVersCelcius(variable);
         System.out.println(variable+" degres Kelvin est egal à "+ variable2+" degres Celcius." );
         
     }
        
         else if (choix==3){
-        variable2=FarenheitVersCelcius(variable);
+        variable2=premier.FarenheitVersCelcius(variable);
         System.out.println(variable+" degres Kelvin est egal à "+ variable2+" degres Celcius." );
         
     }
         
         else if (choix==4){
-        variable2=CelciusVersFarenheit(variable);
+        variable2=premier.CelciusVersFarenheit(variable);
         System.out.println(variable+" degres Celcius est egal à "+ variable2+" degres Farenheit." );
         
     }
         
         else if (choix==5){
-        variable2=KelvinVersFarenheit(variable);
+        variable2=premier.KelvinVersFarenheit(variable);
         System.out.println(variable+" degres Kelvin est egal à "+ variable2+" degres Farenheit." );
         
     }
         
         else if (choix==6){
-        variable2=FarenheitVersKelvin(variable);
+        variable2=premier.FarenheitVersKelvin(variable);
         System.out.println(variable+" degres Farenheit est egal à "+ variable2+" degres Kelvin." );
         
     }         
                
                
-               
+        System.out.println(premier);      
                
         
         
