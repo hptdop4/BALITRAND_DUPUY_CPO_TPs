@@ -22,6 +22,9 @@ public class TP2_relation_1_BALITRAND {
         Voiture uneAutreClio = new Voiture ("Clio", "Renault", 5 ) ; 
         Voiture une2008 = new Voiture ("2008", "Peugeot", 6 ) ; 
         Voiture uneMicra = new Voiture ("Micra", "Nissan", 4 ) ; 
+        
+        //definition autre voiture pour l'ex 10
+        Voiture uneautreMicra = new Voiture ("Micra2", "Nissan", 5 ) ;
  
         Personne bob = new Personne("Bobby", "Sixkiller"); 
         Personne reno = new Personne("Reno", "Raines"); 
@@ -62,6 +65,8 @@ public class TP2_relation_1_BALITRAND {
        System.out.println("La seconde voiture de Reno est une " + reno.liste_voitures[1] ) ;
        
        
+       reno.ajouter_voiture(uneautreMicra);
+       System.out.println(reno.liste_voitures[2]); //on a bien ajoute une voiture a reno
     }
     
 }

@@ -36,12 +36,29 @@ public class Personne {
 }
     
    public boolean ajouter_voiture( Voiture voiture_a_ajouter) { 
- 
+    
+    boolean verif=true;
+    
+    if (voiture_a_ajouter.proprietaire!=null){
+        
+       verif=false; 
+    }
+     else if(nbVoitures==3) {
+        
+          verif=false;
+        
+    }  
+     else{
+         this.liste_voitures[nbVoitures]=voiture_a_ajouter;
+         
+         nbVoitures++;
+         
+         voiture_a_ajouter.proprietaire = this ; 
+         
+         verif=true;
+     } 
        
-       
-       
-       
-       
+    return verif;   
 }  
     
     
