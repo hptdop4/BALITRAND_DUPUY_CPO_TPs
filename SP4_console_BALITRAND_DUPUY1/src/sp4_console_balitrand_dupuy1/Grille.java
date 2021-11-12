@@ -76,6 +76,10 @@ public String lireCouleurDuJeton(int ligne , int colonne){
     
 }
 
+public void afficherGrilleSurConsole(){
+    
+   
+}
 
 ///S'aider de moodle
 
@@ -83,13 +87,13 @@ public boolean etreGagnanteDuJeton(Joueur joueur){
     
     String saCouleur=joueur.Couleur;
     int compterJ = 0;
-    for (int i = 0, i<=5, i++){
+    for (int i = 0 ; i<=5 ; i++){
         if (compterJ == 4){
           
             
-         return true ;
+         
         }
-    }
+    }return true;
 }
 
 
@@ -98,9 +102,8 @@ public boolean colonneRemplie(int colonne){
     if(CellulesJeu[0][colonne]!=null){ 
           return true;
    }
-    
     else{
         return false;
     }
-
+ }
 }
