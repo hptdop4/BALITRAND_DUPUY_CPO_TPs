@@ -1,6 +1,6 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * TP Super puissance 4 
+ * Roxana Dupuy _ Flavie Balitrand
  */
 package sp4_console_balitrand_dupuy1;
 

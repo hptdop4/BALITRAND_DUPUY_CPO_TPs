@@ -10,8 +10,36 @@ package sp4_console_balitrand_dupuy1;
  */
 public class Cellule {
     
-    Jeton jetonCourant;
+    Jeton jetonCourant=null;
+    boolean desintegrateur=false;
+    
+    public Cellule() { 
+    
+       jetonCourant=null;
+       desintegrateur=false;
+   }
+    
+    public boolean affecterJeton(Jeton j){
+        
+        if (jetonCourant==null){
+            
+            jetonCourant=j;
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
     
     
-    
+    public String lireCouleurDuJeton(){
+        
+        if (jetonCourant!=null){
+        return jetonCourant.Couleur;
+    }
+        else{
+            return"Vide";
+        }
+}
 }
