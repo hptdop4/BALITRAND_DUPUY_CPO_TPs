@@ -10,6 +10,8 @@ package sp4_console_balitrand_dupuy1;
  */
 public class Jeton {
     
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_RED = "\u001B[31m";
     
     String Couleur;
     
@@ -23,6 +25,18 @@ public class Jeton {
         return Couleur;
     }
     
+    @Override 
+    public String toString() { 
+        
+        if ("Rouge".equals(Couleur)){
+            
+            return "\u001B[31m";
+        }
+        else{
+            return "\u001B[33m";
+        }
+        
+    }
 }
 
 

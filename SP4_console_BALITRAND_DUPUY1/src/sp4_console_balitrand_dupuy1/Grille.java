@@ -10,10 +10,16 @@ package sp4_console_balitrand_dupuy1;
  */
 public class Grille {
     
-    Cellule[][] CellulesJeu;
+    
+    Cellule CellulesJeu[][] = new Cellule [6][7];
     
     public Grille(){
-        CellulesJeu = new Cellule [6][7];    
+        
+        for (int i=0;i<7;i++){
+            for (int j=0; j<6 ; j++){
+                CellulesJeu[j][i]=new Cellule();
+            }
+        } 
     }
     
     
