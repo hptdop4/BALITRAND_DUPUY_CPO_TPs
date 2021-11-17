@@ -5,7 +5,7 @@
 package sp4_console_balitrand_dupuy1;
 
 import java.util.Random;
-import java.util.Scanner;
+
 
 public class Partie {
     
@@ -16,7 +16,15 @@ public class Partie {
     Joueur joueurCourant;//désigne le joueur courant à tout moment de la partie
     Grille grilleJeu;//la grille de jeu
     
+    Joueur J1;
+    Joueur J2;
     
+ public Partie (Joueur joueur1, Joueur joueur2){
+    
+     J1=joueur1;
+     J2=joueur2;
+    
+ }   
     public void attribuerCouleursAuxJoueurs (){
         
         Random rand = new Random();
@@ -42,61 +50,62 @@ public class Partie {
         grilleJeu = new Grille() ; // création grille 
         
         
-        //attribution nom aux joueurs
-        String nom1;
-        String nom2;
-        
-        
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Joueur 1 quel est votre pseudo ? ");
-        nom1 = sc.nextString();
-        System.out.println("Joueur 2 quel est votre pseudo ? ");
-        nom2 = sc.nextString();
-        
-        ListeJoueur[0]=nom1;
-        ListeJoueur[1]=nom2;
-        
-        Joueur J1 = new Joueur(nom1) ;
-        Joueur J2 = new Joueur(nom2) ;
-        
-        
-       
-        
         // attribution des jetons aux joueurs
+        
+        
         
         for (int t=0; t<=20; t++){
         
       Jeton jetonR_t = new Jeton("Rouge");
+      
+      if(J1.Couleur=="Rouge"){
+       J1.ListeJetons[t]=jetonR_t;
+      }
+      else{
+          J2.ListeJetons[t]=jetonR_t;
+      }
         }
         
         
         for (int t=0; t<=20; t++){
         
       Jeton jetonJ_t = new Jeton("Jaune");
+      
+      if(J1.Couleur=="Jaune"){
+       J1.ListeJetons[t]=jetonJ_t;
+      }
+      else{
+          J2.ListeJetons[t]=jetonJ_t;
+      }
+        }
+      
         }
         
         
-        
-           
-        
-        
-        
-        
-    }
     
     public void debuterPartie (){
+        
+        JoueurCourant = listeJoueur [0];
+        initialiserPartie ();
+        
+        while (){
+            
+           
+        }
+        
+        
         
     }
     
     
     public Joueur ProchainJoueur(){
         
-        if (joueurCourant==ListeJoueur[0]){
+        if (joueurCourant==J1){
             
-            return ListeJoueur[1];
+            return J2;
         }
         else{
-            return ListeJoueur[0];
+            return J1;
         }
     }
 }
