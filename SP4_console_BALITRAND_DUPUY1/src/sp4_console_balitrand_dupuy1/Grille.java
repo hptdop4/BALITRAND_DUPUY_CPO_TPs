@@ -91,15 +91,25 @@ public void afficherGrilleSurConsole(){
 
 public boolean etreGagnanteDuJeton(Joueur joueur){
     
-    String saCouleur=joueur.Couleur;
-    int compterJ = 0;
-    for (int i = 0 ; i<=5 ; i++){
-        if (compterJ == 4){
-          
-            
-         
-        }
-    }return true;
+    //String saCouleur=joueur.Couleur;
+    //Vérifier si il y a une ligne gagnante pour le joueur
+    
+    if (Jeton.Couleur [i][k]= Jeton.Couleur [i][k+1]){
+      if (Jeton.Couleur [x][y]= Jeton.Couleur [x][y+2]){
+        if (Jeton.Couleur [x][y]= Jeton.Couleur [x][y+3]){
+           return true ;
+        }   
+          return true; 
+      }  
+      return true; 
+    }
+    else {
+        return false ;
+    }
+    
+    //Vérifier si il y a une colonne gagnante 
+    //Vérifier si il y a une diagonnale montante gagnante
+    //Vérifier si il y a une diagonnale descendante gagnante
 }
 
 
