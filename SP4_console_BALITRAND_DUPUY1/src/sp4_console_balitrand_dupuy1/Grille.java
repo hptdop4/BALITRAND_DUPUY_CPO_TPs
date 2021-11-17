@@ -91,28 +91,65 @@ public void afficherGrilleSurConsole(){
 
 public boolean etreGagnanteDuJeton(Joueur joueur){
     
-    //String saCouleur=joueur.Couleur;
+   
     //Vérifier si il y a une ligne gagnante pour le joueur
+    for (int i = 0 ; i<6; i++ ){ // ligne
+        for (int k=0 ; k<=3; k++){ // colonne
+            if (joueur.Couleur ==   CellulesJeu[i][k].lireCouleurDuJeton() && 
+                    joueur.Couleur ==   CellulesJeu[i][k+1].lireCouleurDuJeton() &&
+                        joueur.Couleur ==   CellulesJeu[i][k+2].lireCouleurDuJeton() &&
+                            joueur.Couleur ==   CellulesJeu[i][k+3].lireCouleurDuJeton()){
+                
+                return true;}
+          
+        }
+       }
+        //Vérifier si il y a une colonne gagnante pour le joueur
+    for (int k=0 ; k<=6; k++ ){ // colonne
+        for (int i=0 ; i<=2; i++){ // ligne
+            if (joueur.Couleur ==   CellulesJeu[i][k].lireCouleurDuJeton() && 
+                    joueur.Couleur ==   CellulesJeu[i+1][k].lireCouleurDuJeton() &&
+                        joueur.Couleur ==   CellulesJeu[i+2][k].lireCouleurDuJeton() &&
+                            joueur.Couleur ==   CellulesJeu[i+3][k].lireCouleurDuJeton()){
+                
+                return true;}
+          
+        }
+       }
     
-    if (Jeton.Couleur [i][k]= Jeton.Couleur [i][k+1]){
-      if (Jeton.Couleur [x][y]= Jeton.Couleur [x][y+2]){
-        if (Jeton.Couleur [x][y]= Jeton.Couleur [x][y+3]){
-           return true ;
-        }   
-          return true; 
-      }  
-      return true; 
-    }
-    else {
-        return false ;
-    }
+        //Vérifier si il y a une diagonale descendante gagnante pour le joueur
+        
+        for (int k=0 ; k<=3; k++ ){ // colonne
+        for (int i=0 ; i<=2; i++){ // ligne
+            if (joueur.Couleur ==   CellulesJeu[i][k].lireCouleurDuJeton() && 
+                    joueur.Couleur ==   CellulesJeu[i+1][k+1].lireCouleurDuJeton() &&
+                        joueur.Couleur ==   CellulesJeu[i+2][k+2].lireCouleurDuJeton() &&
+                            joueur.Couleur ==   CellulesJeu[i+3][k+3].lireCouleurDuJeton()){
+                
+                return true;}
+          
+        }
+       }
+        
+        //Vérifier si il y a une diagonale montante gagnante pour le joueur
+        
+        for (int k=0 ; k<=3; k++ ){ // colonne
+        for (int i=3 ; i<=5; i++){ // ligne
+            if (joueur.Couleur ==   CellulesJeu[i][k].lireCouleurDuJeton() && 
+                    joueur.Couleur ==   CellulesJeu[i-1][k+1].lireCouleurDuJeton() &&
+                        joueur.Couleur ==   CellulesJeu[i-2][k+2].lireCouleurDuJeton() &&
+                            joueur.Couleur ==   CellulesJeu[i-3][k+3].lireCouleurDuJeton()){
+                
+                return true;}
+          
+        }
+       }
     
-    //Vérifier si il y a une colonne gagnante 
-    //Vérifier si il y a une diagonnale montante gagnante
-    //Vérifier si il y a une diagonnale descendante gagnante
-}
-
-
+        return false;
+      }
+     
+ 
+   
 public boolean colonneRemplie(int colonne){
     
     if(CellulesJeu[0][colonne]!=null){ 
