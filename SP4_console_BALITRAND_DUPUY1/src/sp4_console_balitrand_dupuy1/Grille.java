@@ -84,6 +84,26 @@ public String lireCouleurDuJeton(int ligne , int colonne){
 
 public void afficherGrilleSurConsole(){
     
+    for (int i=0; i<=5; i++){
+        for (int k=0; k<=6 ; k++){
+            
+            if (CellulesJeu[i][k].jetonCourant.Couleur=="Rouge"){
+                
+                System.out.print("\u001B[31m" + "O ");
+            }
+            else if (CellulesJeu[i][k].jetonCourant.Couleur=="Jaune"){
+                
+                System.out.print("\u001B[33m" + "O ");
+            }
+        
+            else if (CellulesJeu[i][k].jetonCourant.Couleur==null){
+                
+                System.out.print("N ");
+            }
+            
+        }
+        
+    }
    
 }
 

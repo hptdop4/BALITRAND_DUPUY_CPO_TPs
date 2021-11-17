@@ -37,6 +37,7 @@ public class Joueur {
         
         else {
             ListeJetons[nombreJetonsRestants]=j;
+            nombreJetonsRestants++;
             return true;
         }
     }

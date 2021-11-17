@@ -36,20 +36,50 @@ public class Partie {
         
     }
     
+    
     public void initialiserPartie (){
         
+        grilleJeu = new Grille() ; // création grille 
         
-        grilleJeu.viderGrille();
         
         //attribution nom aux joueurs
+        String nom1;
+        String nom2;
+        
+        
         Scanner sc=new Scanner(System.in);
         System.out.println("Joueur 1 quel est votre pseudo ? ");
-        Joueur J1 = new Joueur (sc.nextLine());
+        nom1 = sc.nextString();
         System.out.println("Joueur 2 quel est votre pseudo ? ");
-        Joueur J2 = new Joueur (sc.nextLine());
+        nom2 = sc.nextString();
         
-        ListeJoueur[0]=J1;
-        ListeJoueur[1]=J2;
+        ListeJoueur[0]=nom1;
+        ListeJoueur[1]=nom2;
+        
+        Joueur J1 = new Joueur(nom1) ;
+        Joueur J2 = new Joueur(nom2) ;
+        
+        
+       
+        
+        // attribution des jetons aux joueurs
+        
+        for (int t=0; t<=20; t++){
+        
+      Jeton jetonR_t = new Jeton("Rouge");
+        }
+        
+        
+        for (int t=0; t<=20; t++){
+        
+      Jeton jetonJ_t = new Jeton("Jaune");
+        }
+        
+        
+        
+           
+        
+        
         
         
     }
