@@ -37,12 +37,12 @@ public class SP4_console_BALITRAND_DUPUY1 {
         
         
         
-        Joueur J1 = new Joueur(nom1) ;
-        Joueur J2 = new Joueur(nom2) ;
+        Joueur joueur1 = new Joueur(nom1) ;
+        Joueur joueur2 = new Joueur(nom2) ;
         
         
         
-        Partie nouvellePartie=new Partie(Joueur J1; Joueur J2);
+        Partie nouvellePartie=new Partie(Joueur joueur1; Joueur joueur2);
         
         
         

@@ -112,13 +112,29 @@ public class Partie {
         while (fin==false){
             
             grilleJeu.afficherGrilleSurConsole();
-            
+             int choix;
+             Scanner sc=new Scanner(System.in);
+             System.out.println("Joueur : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
+             choix = sc.nextInt();
+             
+            if (choix == 1){
+              int colonne;
+              System.out.println("Joueur : choisissez votre colonne : " + "\n 0 - 1 - 2 - 3 - 4 - 5 - 6 " );
+              colonne = sc.nextInt();
+              Jeton j;
+              j = joueurCourant.ListeJetons [joueurCourant.nombreJetonsRestants];
+              boolean verification;
+              verification = grilleJeu.ajouterJetonDansColonne(j, colonne);  
+            }
             
             
             
             
            if(grilleJeu.etreGagnanteDuJeton(joueurCourant)==true){
                fin=true;
+           }
+           else if(grilleJeu.etreRemplie()== true){
+               fin = true;
            }
            else{
                ProchainJoueur();
