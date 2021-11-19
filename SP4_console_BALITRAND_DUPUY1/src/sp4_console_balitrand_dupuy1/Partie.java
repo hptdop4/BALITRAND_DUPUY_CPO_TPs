@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Partie {
     
     
-    Joueur [] ListeJoueur ;//tableau des deux joueurs de la partie
+    Joueur [] ListeJoueur = new Joueur [2];//tableau des deux joueurs de la partie
     
     
     Joueur joueurCourant;//désigne le joueur courant à tout moment de la partie
@@ -109,31 +109,68 @@ public class Partie {
         
         boolean fin=false;
         
-        while (fin==false){
+        while (fin==false){ // tant que la partie n'est pas finie : 
             
             grilleJeu.afficherGrilleSurConsole();
+            
+            // Choix de l'action
              int choix;
              Scanner sc=new Scanner(System.in);
              System.out.println("Joueur : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
              choix = sc.nextInt();
              
+            //On vérifie si il choisit bien un nombre parmi les choix proposés
+
+            while(choix!= 1 && choix !=2 && choix!=3){
+                 System.out.println("Joueur : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
+                 choix = sc.nextInt();
+            }
+            
+            // Si il choisit de jouer un jeton :
             if (choix == 1){
               int colonne;
               System.out.println("Joueur : choisissez votre colonne : " + "\n 0 - 1 - 2 - 3 - 4 - 5 - 6 " );
               colonne = sc.nextInt();
+              
+            // On vérifie si il choisit un nombre parmi les choix proposés
+              while(colonne!= 0 &&  colonne !=1 && colonne !=2 && colonne!=3 && colonne!=4 && colonne!=5 && colonne!=6){
+                 System.out.println("Joueur : choisissez votre colonne : " + "\n 0 - 1 - 2 - 3 - 4 - 5 - 6 " );
+                 colonne = sc.nextInt(); 
+              }
+              
+              
+              boolean validation = grilleJeu.colonneRemplie(colonne); // Verifie si colonne pleine
+              
+              
+              while (validation == false){
+                System.out.println ("La colonne est pleine, vous devez rejouer");
+                System.out.println("Joueur : choisissez votre colonne : " + "\n 0 - 1 - 2 - 3 - 4 - 5 - 6 " );
+                colonne = sc.nextInt();  
+                validation = grilleJeu.colonneRemplie(colonne);
+              }
+              
               Jeton j;
-              j = joueurCourant.ListeJetons [joueurCourant.nombreJetonsRestants];
-              boolean verification;
-              verification = grilleJeu.ajouterJetonDansColonne(j, colonne);  
+              j = joueurCourant.ListeJetons [joueurCourant.nombreJetonsRestants]; // définit un jeton lui même définit par sa couleur
+              joueurCourant.nombreJetonsRestants--;// A chaque jeton jooué on en lève un jeton
+              boolean verification;//On  verifie si colonne déjà pleine
+              verification = grilleJeu.ajouterJetonDansColonne(j, colonne); 
+              
             }
             
             
             
             
-           if(grilleJeu.etreGagnanteDuJeton(joueurCourant)==true){
+            
+           if(grilleJeu.etreGagnanteDuJeton(joueurCourant)==true){ // Arret partie si on a une grille gagnante
+               
+               System.out.println("La partie est finie, résultats : " + "Le gagnant est :" + joueurCourant);
+               
                fin=true;
            }
-           else if(grilleJeu.etreRemplie()== true){
+           else if(grilleJeu.etreRemplie()== true){// Arret partie si on a une grille remplie
+               
+               System.out.println("La grille est pleine, fin de la partie ");
+               
                fin = true;
            }
            else{
@@ -142,7 +179,8 @@ public class Partie {
         }
         
         
-        
+   
+       
     }
 }
     

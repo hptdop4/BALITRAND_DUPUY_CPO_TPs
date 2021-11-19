@@ -28,21 +28,29 @@ public class SP4_console_BALITRAND_DUPUY1 {
         
         Scanner sc=new Scanner(System.in);
         System.out.println("Joueur 1 quel est votre pseudo ? ");
-        nom1 = sc.nextString();
+        nom1 = sc.nextLine();
         System.out.println("Joueur 2 quel est votre pseudo ? ");
-        nom2 = sc.nextString();
-        
-        ListeJoueur[0]=nom1;
-        ListeJoueur[1]=nom2;
+        nom2 = sc.nextLine();
         
         
-        
-        Joueur joueur1 = new Joueur(nom1) ;
+        Joueur joueur1 = new Joueur(nom1) ;//Création des deux joueurs
         Joueur joueur2 = new Joueur(nom2) ;
         
         
+        Partie nouvellePartie = new Partie(joueur1,joueur2); // Création d'une partie
+      
+        nouvellePartie.ListeJoueur[0]=joueur1;
+        nouvellePartie.ListeJoueur[1]=joueur2;
         
-        Partie nouvellePartie=new Partie(Joueur joueur1; Joueur joueur2);
+        nouvellePartie.debuterPartie ();
+        
+       
+        
+        
+        
+        
+        
+        
         
         
         
