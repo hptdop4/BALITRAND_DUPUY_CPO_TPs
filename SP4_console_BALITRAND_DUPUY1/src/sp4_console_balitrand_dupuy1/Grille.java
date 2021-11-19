@@ -85,9 +85,18 @@ public String lireCouleurDuJeton(int ligne , int colonne){
 public void afficherGrilleSurConsole(){
     
     for (int i=0; i<=5; i++){
-        for (int k=0; k<=6 ; k++){
+        for (int k=0; k<=7 ; k++){
             
-            if (CellulesJeu[i][k].jetonCourant.Couleur=="Rouge"){
+            if (k==7){
+               System.out.print("\n") ;
+            }
+            
+            else if (CellulesJeu[i][k].jetonCourant==null){
+                
+                System.out.print("N ");
+            }
+            
+            else if (CellulesJeu[i][k].jetonCourant.Couleur=="Rouge"){
                 
                 System.out.print("\u001B[31m" + "O ");
             }
@@ -96,10 +105,7 @@ public void afficherGrilleSurConsole(){
                 System.out.print("\u001B[33m" + "O ");
             }
         
-            else if (CellulesJeu[i][k].jetonCourant.Couleur==null){
-                
-                System.out.print("N ");
-            }
+            
             
         }
         
@@ -172,7 +178,7 @@ public boolean etreGagnanteDuJeton(Joueur joueur){
    
 public boolean colonneRemplie(int colonne){
     
-    if(CellulesJeu[0][colonne]!=null){ 
+    if(CellulesJeu[0][colonne].jetonCourant!=null){ 
           return true;
    }
     else{

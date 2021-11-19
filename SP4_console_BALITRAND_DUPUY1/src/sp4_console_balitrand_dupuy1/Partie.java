@@ -51,37 +51,19 @@ public class Partie {
         grilleJeu = new Grille() ; // création grille 
         
         
-        // attribution des jetons aux joueurs
+// attribution des jetons aux joueurs
         
         
         
         for (int t=0; t<=20; t++){
         
-      Jeton jetonR_t = new Jeton("Rouge");
-      
-      if(J1.Couleur=="Rouge"){
-       J1.ListeJetons[t]=jetonR_t;
-      }
-      else{
-          J2.ListeJetons[t]=jetonR_t;
-      }
+      Jeton jetonj1 = new Jeton(ListeJoueur[0].Couleur);
+      ListeJoueur[0].ajouterJeton(jetonj1);
+      Jeton jetonj2 = new Jeton( ListeJoueur[1].Couleur);
+       ListeJoueur[1].ajouterJeton(jetonj2);
+
         }
-        
-        
-        for (int t=0; t<=20; t++){
-        
-      Jeton jetonJ_t = new Jeton("Jaune");
-      
-      if(J1.Couleur=="Jaune"){
-       J1.ListeJetons[t]=jetonJ_t;
-      }
-      else{
-          J2.ListeJetons[t]=jetonJ_t;
-      }
-        }
-      
-        }
-        
+    }       
     
     public Joueur ProchainJoueur(){
         
@@ -99,20 +81,22 @@ public class Partie {
     
     public void debuterPartie (){
         
-        
+        System.out.println("J4");
         
         attribuerCouleursAuxJoueurs ();
+        System.out.println("J5");
         
+    
         initialiserPartie ();
-        
+        System.out.println(J1.Couleur);
         joueurCourant=J1;
         
         boolean fin=false;
-        
+        System.out.println("J5");
         while (fin==false){ // tant que la partie n'est pas finie : 
-            
+            System.out.println("J5");
             grilleJeu.afficherGrilleSurConsole();
-            
+            System.out.println("ghjfkfy");
             // Choix de l'action
              int choix;
              Scanner sc=new Scanner(System.in);
@@ -141,23 +125,27 @@ public class Partie {
               
               boolean validation = grilleJeu.colonneRemplie(colonne); // Verifie si colonne pleine
               
+              System.out.println(validation);
               
-              while (validation == false){
+              while (validation == true){
                 System.out.println ("La colonne est pleine, vous devez rejouer");
                 System.out.println("Joueur : choisissez votre colonne : " + "\n 0 - 1 - 2 - 3 - 4 - 5 - 6 " );
                 colonne = sc.nextInt();  
                 validation = grilleJeu.colonneRemplie(colonne);
               }
-              
+              System.out.println ("L");
               Jeton j;
-              j = joueurCourant.ListeJetons [joueurCourant.nombreJetonsRestants]; // définit un jeton lui même définit par sa couleur
+              j = joueurCourant.ListeJetons [joueurCourant.nombreJetonsRestants-1]; // définit un jeton lui même définit par sa couleur
+              System.out.println ("m");
               joueurCourant.nombreJetonsRestants--;// A chaque jeton jooué on en lève un jeton
+              System.out.println ("p");
               boolean verification;//On  verifie si colonne déjà pleine
+              System.out.println ("o");
               verification = grilleJeu.ajouterJetonDansColonne(j, colonne); 
-              
+              System.out.println ("t");
             }
-            
-            
+           // System.out.println(joueurCourant.nombreJetonsRestants); verifier si code marche
+           // grilleJeu.afficherGrilleSurConsole();
             
             
             
