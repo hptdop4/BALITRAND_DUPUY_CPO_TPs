@@ -19,22 +19,6 @@ public class SP4_console_BALITRAND_DUPUY1 {
         
         
         
-        //attribution nom aux joueurs
-        String nom1;
-        String nom2;
-        
-        
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Joueur 1 quel est votre pseudo ? ");
-        nom1 = sc.nextString();
-        System.out.println("Joueur 2 quel est votre pseudo ? ");
-        nom2 = sc.nextString();
-        
-        ListeJoueur[0]=nom1;
-        ListeJoueur[1]=nom2;
-        
-        Joueur J1 = new Joueur(nom1) ;
-        Joueur J2 = new Joueur(nom2) ; 
         
         
         

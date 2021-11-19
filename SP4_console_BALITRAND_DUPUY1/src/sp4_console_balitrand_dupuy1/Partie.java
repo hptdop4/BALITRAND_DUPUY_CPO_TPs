@@ -5,6 +5,7 @@
 package sp4_console_balitrand_dupuy1;
 
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class Partie {
@@ -81,22 +82,6 @@ public class Partie {
       
         }
         
-        
-    
-    public void debuterPartie (){
-        
-        JoueurCourant = listeJoueur [0];
-        initialiserPartie ();
-        
-        while (){
-            
-           
-        }
-        
-        
-        
-    }
-    
     
     public Joueur ProchainJoueur(){
         
@@ -108,4 +93,57 @@ public class Partie {
             return J1;
         }
     }
+
+
+        
+    
+    public void debuterPartie (){
+        
+        
+        //attribution nom aux joueurs
+        String nom1;
+        String nom2;
+        
+        
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Joueur 1 quel est votre pseudo ? ");
+        nom1 = sc.nextString();
+        System.out.println("Joueur 2 quel est votre pseudo ? ");
+        nom2 = sc.nextString();
+        
+        ListeJoueur[0]=nom1;
+        ListeJoueur[1]=nom2;
+        
+        Joueur J1 = new Joueur(nom1) ;
+        Joueur J2 = new Joueur(nom2) ; 
+        
+        attribuerCouleursAuxJoueurs ();
+        
+        initialiserPartie ();
+        
+        joueurCourant=J1;
+        
+        boolean fin=false;
+        
+        while (fin==false){
+            
+            grilleJeu.afficherGrilleSurConsole();
+            
+            
+            
+            
+            
+           if(grilleJeu.etreGagnanteDuJeton(joueurCourant)==true){
+               fin=true;
+           }
+           else{
+               ProchainJoueur();
+           }
+        }
+        
+        
+        
+    }
 }
+    
+    
