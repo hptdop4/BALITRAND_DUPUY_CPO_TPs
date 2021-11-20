@@ -28,7 +28,11 @@ public class Grille {
         boolean vrai;
         
         
-      if(CellulesJeu[0][colonne]!=null){ 
+        
+      if(CellulesJeu[0][colonne].jetonCourant!=null){ 
+          
+          
+          
           return false;
           
       }
@@ -37,14 +41,14 @@ public class Grille {
               
               if(i==5){
                   if ("Vide".equals(CellulesJeu[5][colonne].lireCouleurDuJeton()))
-                  CellulesJeu[i][colonne].affecterJeton(j);
-                  System.out.println("ICI  §§§§§§§" + CellulesJeu[i][colonne].lireCouleurDuJeton());
                   
+                      CellulesJeu[i][colonne].affecterJeton(j);
+                 
               }
               
               else if (!"Vide".equals(CellulesJeu[i][colonne].lireCouleurDuJeton())){
               
-                  vrai=CellulesJeu[i-1][colonne].affecterJeton(j);
+                  CellulesJeu[i-1][colonne].affecterJeton(j);
                   
                   
               }
@@ -61,7 +65,7 @@ public class Grille {
         boolean test=true;
         for (int k=0; k<=6;k++){
             
-              if (CellulesJeu[0][k]==null){
+              if (CellulesJeu[0][k].lireCouleurDuJeton()=="Vide"){
                    test=false;
               }
     }
@@ -118,10 +122,12 @@ public void afficherGrilleSurConsole(){
             else if (CellulesJeu[i][k].jetonCourant.Couleur=="Rouge"){
                 
                 System.out.print("\u001B[31m" + "O ");
+                System.out.print("\u001B[0m");
             }
             else if (CellulesJeu[i][k].jetonCourant.Couleur=="Jaune"){
                 
                 System.out.print("\u001B[33m" + "O ");
+                System.out.print("\u001B[0m");
             }
         
             

@@ -105,14 +105,21 @@ public class Partie {
              int choix;
              Scanner sc=new Scanner(System.in);
              
-             System.out.println("Joueur : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
+             
+             System.out.println(joueurCourant.Nom + " il vous reste " + joueurCourant.nombreJetonsRestants + " Jetons");
+             
+             System.out.println( joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
              choix = sc.nextInt();
              
             //On vérifie si il choisit bien un nombre parmi les choix proposés
 
             while(choix!= 1 && choix !=2 && choix!=3){
+                
+                
                  System.out.println("Choix non valide, rejouez");
-                 System.out.println("Joueur : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
+                 
+                 System.out.println(joueurCourant.Nom + " il vous reste " + joueurCourant.nombreJetonsRestants + " Jetons");
+                 System.out.println(joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
                  choix = sc.nextInt();
             }
             
@@ -120,13 +127,13 @@ public class Partie {
             if (choix == 1){
               
                 int colonne;
-                System.out.println("Joueur : choisissez votre colonne : " + "\n 0 - 1 - 2 - 3 - 4 - 5 - 6 " );
+                System.out.println(joueurCourant.Nom +" : choisissez votre colonne : " + "\n 0 - 1 - 2 - 3 - 4 - 5 - 6 " );
                 colonne = sc.nextInt();
               
             // On vérifie si il choisit un nombre parmi les choix proposés
               while(colonne!= 0 &&  colonne !=1 && colonne !=2 && colonne!=3 && colonne!=4 && colonne!=5 && colonne!=6){
                  System.out.println("Choix non valide, rejouez");
-                 System.out.println("Joueur : choisissez votre colonne : " + "\n 0 - 1 - 2 - 3 - 4 - 5 - 6 " );
+                 System.out.println(joueurCourant.Nom +" : choisissez votre colonne : " + "\n 0 - 1 - 2 - 3 - 4 - 5 - 6 " );
                  colonne = sc.nextInt(); 
               }
               
@@ -139,7 +146,7 @@ public class Partie {
               //si la colonne est deja pleine on rejoue
               while (validation == true){
                 System.out.println ("La colonne est pleine, vous devez rejouer");
-                System.out.println("Joueur : choisissez votre colonne : " + "\n 0 - 1 - 2 - 3 - 4 - 5 - 6 " );
+                System.out.println(joueurCourant.Nom +" : choisissez votre colonne : " + "\n 0 - 1 - 2 - 3 - 4 - 5 - 6 " );
                 colonne = sc.nextInt();  
                 validation = grilleJeu.colonneRemplie(colonne);
               }
@@ -157,10 +164,12 @@ public class Partie {
               
               boolean verification;//On  ajoute j ( de la bonne couleur) dans la colonne choisie 
              
+   
+ 
+ 
               
-              verification = grilleJeu.ajouterJetonDansColonne(j, colonne);
+              verification = grilleJeu.ajouterJetonDansColonne(j, colonne);  
               
-              System.out.println(verification);
             }
            
             
@@ -182,7 +191,7 @@ public class Partie {
             
            if(grilleJeu.etreGagnanteDuJeton(joueurCourant)==true){ // Arret partie si on a une grille gagnante
                
-               System.out.println("La partie est finie, résultats : " + "Le gagnant est :" + joueurCourant);
+               System.out.println("La partie est finie, résultats : " + "Le gagnant est :" + joueurCourant.Nom);
                
                fin=true;
            }
@@ -193,7 +202,8 @@ public class Partie {
                fin = true;
            }
            else{
-               ProchainJoueur();
+               
+               joueurCourant=ProchainJoueur();
            }
         }
         
