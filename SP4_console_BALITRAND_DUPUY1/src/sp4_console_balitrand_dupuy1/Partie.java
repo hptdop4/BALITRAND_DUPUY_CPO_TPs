@@ -174,17 +174,18 @@ public class Partie {
            
             
             
-            System.out.println(joueurCourant.nombreJetonsRestants); //verifier si code marche
+            System.out.println(joueurCourant.nombreJetonsRestants); //verifier si code marche, à supprimer
             
-            grilleJeu.afficherGrilleSurConsole();
+            grilleJeu.afficherGrilleSurConsole();// verifier si code marche, à supprimer 
             
             
             for (int i=0; i<=5; i++){
-        for (int k=0; k<=6 ; k++){
+        for (int k=0; k<=6 ; k++){ 
             
           System.out.println(grilleJeu.CellulesJeu[i][k].lireCouleurDuJeton());
             
-        }}
+         }
+        }
             
             
             

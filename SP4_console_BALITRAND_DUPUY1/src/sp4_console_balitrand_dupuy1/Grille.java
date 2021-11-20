@@ -48,7 +48,7 @@ public class Grille {
               
               else if (!"Vide".equals(CellulesJeu[i][colonne].lireCouleurDuJeton())){
               
-                  CellulesJeu[i-1][colonne].affecterJeton(j);
+                  CellulesJeu[i-1][colonne].affecterJeton(j); 
                   
                   
               }
@@ -210,4 +210,17 @@ public boolean colonneRemplie(int colonne){
         return false;
     }
  }
+
+/*
+public boolean placerTrouNoir (int ligne ,int colonne){ // VERSION 2 
+                 
+    if (CellulesJeu[ligne][colonne].trouNoir!=false){
+       CellulesJeu[ligne][colonne].placerTrouNoir();
+        return true; 
+    }
+    else if (CellulesJeu[ligne][colonne].trouNoir==false){
+        return false;
+  }
+ 
+}*/
 }
