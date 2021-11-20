@@ -15,8 +15,8 @@ public class Grille {
     
     public Grille(){
         
-        for (int i=0;i<7;i++){
-            for (int j=0; j<6 ; j++){
+        for (int i=0;i<=6;i++){
+            for (int j=0; j<=5 ; j++){
                 CellulesJeu[j][i]=new Cellule();
             }
         } 
@@ -25,18 +25,33 @@ public class Grille {
     
     public boolean  ajouterJetonDansColonne(Jeton j, int colonne){
         
+        boolean vrai;
+        
+        
       if(CellulesJeu[0][colonne]!=null){ 
           return false;
           
       }
       else{
           for (int i=1; i<=5;i++){
-              if (CellulesJeu[i][colonne]!=null){
               
-                  CellulesJeu[i-1][colonne].affecterJeton(j);
+              if(i==5){
+                  if ("Vide".equals(CellulesJeu[5][colonne].lireCouleurDuJeton()))
+                  CellulesJeu[i][colonne].affecterJeton(j);
+                  System.out.println("ICI  §§§§§§§" + CellulesJeu[i][colonne].lireCouleurDuJeton());
+                  
               }
+              
+              else if (!"Vide".equals(CellulesJeu[i][colonne].lireCouleurDuJeton())){
+              
+                  vrai=CellulesJeu[i-1][colonne].affecterJeton(j);
+                  
+                  
+              }
+              
         
           }
+          
               return true;
           
       }
@@ -84,8 +99,12 @@ public String lireCouleurDuJeton(int ligne , int colonne){
 
 public void afficherGrilleSurConsole(){
     
+    
+    
+    
     for (int i=0; i<=5; i++){
         for (int k=0; k<=7 ; k++){
+            
             
             if (k==7){
                System.out.print("\n") ;

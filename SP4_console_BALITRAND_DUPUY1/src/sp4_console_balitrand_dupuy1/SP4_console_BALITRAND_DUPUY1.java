@@ -36,28 +36,17 @@ public class SP4_console_BALITRAND_DUPUY1 {
         Joueur joueur1 = new Joueur(nom1) ;//Création des deux joueurs
         Joueur joueur2 = new Joueur(nom2) ;
         
-        System.out.println("J");
+       
         Partie nouvellePartie = new Partie(joueur1,joueur2); // Création d'une partie
-      System.out.println("J2");
+      
+        
         nouvellePartie.ListeJoueur[0]=joueur1;
         nouvellePartie.ListeJoueur[1]=joueur2;
-        System.out.println("J3");
+        
+        
         nouvellePartie.debuterPartie ();
         
        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
     
 }

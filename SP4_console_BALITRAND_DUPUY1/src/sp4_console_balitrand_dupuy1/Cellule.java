@@ -10,7 +10,7 @@ package sp4_console_balitrand_dupuy1;
  */
 public class Cellule {
     
-    Jeton jetonCourant=null;
+    Jeton jetonCourant;
     boolean desintegrateur=false;
     
     public Cellule() { 
