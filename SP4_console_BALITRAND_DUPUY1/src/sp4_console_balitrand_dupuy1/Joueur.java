@@ -1,6 +1,5 @@
 /*
- * TP Super puissance 4 
- * Roxana Dupuy _ Flavie Balitrand
+ *Balitrand Flavie et Roxana Dupuy
  */
 package sp4_console_balitrand_dupuy1;
 
