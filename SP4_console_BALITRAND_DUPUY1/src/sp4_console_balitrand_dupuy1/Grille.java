@@ -200,8 +200,19 @@ public boolean etreGagnanteDuJeton(Joueur joueur){
         return false;
       }
      
- 
-   
+ //VERSION 3 lorsqu’un jeton est capturé ou détruit, tasse la grille en 
+//décalant de une ligne les jetons situés au dessus de la cellule libérée
+//public void tasserGrille (int jetontRec){
+//   for(int i =0;i<=5;i++){
+//        for (int k =0;k<=6; k++){
+//    jetonCourant.recupererJeton (jetonRec);
+//    CellulesJeu[i+1][k].jetonCourant;
+//   }
+//  }
+//} 
+
+
+
 public boolean colonneRemplie(int colonne){
     
     if(CellulesJeu[0][colonne].lireCouleurDuJeton()!="Vide"){ 

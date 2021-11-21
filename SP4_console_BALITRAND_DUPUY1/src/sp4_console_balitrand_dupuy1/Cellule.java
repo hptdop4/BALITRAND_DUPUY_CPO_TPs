@@ -32,8 +32,18 @@ public class Cellule {
         }
         
     }
-    /*
-    public boolean placerTrouNoir (){ //VERSION 2 AJOUT TROU NOIR
+    //VERSION 3 renvoie une référence vers le jeton de la cellule
+
+   // public Jeton recupererJeton (){
+   //     Jeton jetonCellule =jetonCourant;
+   //     jetonCourant =null;
+   //     return jetonCellule;
+  //  } 
+    
+    
+    
+    /*//VERSION 2 AJOUT TROU NOIR
+    public boolean placerTrouNoir (){ 
      //ajoute un trou noir à l’endroit indiqué et retourne vrai si l’ajout s’est bien passé, ou faux
         
       
