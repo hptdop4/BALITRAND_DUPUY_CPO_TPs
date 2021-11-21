@@ -65,6 +65,15 @@ public class Partie {
        ListeJoueur[1].ajouterJeton(jetonj2);
 
         }
+        
+        /*
+        // placement des trous noirs
+            for (int i =0; i<=5 ; i++){
+                for (int k = 0; k<=6 ; k++){
+                    grilleJeu.placerTrouNoir(i, k);
+                }
+            }*/
+       
     }       
     
     public Joueur ProchainJoueur(){
@@ -91,7 +100,7 @@ public class Partie {
         joueurCourant=J1;
         
         boolean fin=false;
-        
+                
         grilleJeu.afficherGrilleSurConsole();
         
         
@@ -161,6 +170,7 @@ public class Partie {
               verification = grilleJeu.ajouterJetonDansColonne(j, colonne);  
               
             }
+            
            
             
             grilleJeu.afficherGrilleSurConsole();
