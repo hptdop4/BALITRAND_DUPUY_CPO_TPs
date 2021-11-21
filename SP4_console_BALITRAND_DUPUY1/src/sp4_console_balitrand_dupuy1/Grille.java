@@ -29,7 +29,7 @@ public class Grille {
         
         
         
-      if(CellulesJeu[0][colonne].jetonCourant!=null){ 
+      if(CellulesJeu[0][colonne].lireCouleurDuJeton()!="Vide"){ 
           
           
           
@@ -39,21 +39,23 @@ public class Grille {
       else{
           for (int i=1; i<=5;i++){
               
-              if(i==5){
-                  if ("Vide".equals(CellulesJeu[5][colonne].lireCouleurDuJeton()))
+              
+               if (CellulesJeu[i][colonne].lireCouleurDuJeton()=="Rouge" || CellulesJeu[i][colonne].lireCouleurDuJeton()=="Jaune" ){
+              
                   
-                      CellulesJeu[i][colonne].affecterJeton(j);
-                 
-              }
-              
-              else if (!"Vide".equals(CellulesJeu[i][colonne].lireCouleurDuJeton())){
-              
                   CellulesJeu[i-1][colonne].affecterJeton(j); 
                   
                   
               }
               
-        
+               else if(i==5 && CellulesJeu[i][colonne].lireCouleurDuJeton()=="Vide"){
+                  
+                 
+                  if ("Vide".equals(CellulesJeu[5][colonne].lireCouleurDuJeton()))
+                  
+                      CellulesJeu[i][colonne].affecterJeton(j);
+                 
+              }
           }
           
               return true;
@@ -203,7 +205,7 @@ public boolean etreGagnanteDuJeton(Joueur joueur){
    
 public boolean colonneRemplie(int colonne){
     
-    if(CellulesJeu[0][colonne].jetonCourant!=null){ 
+    if(CellulesJeu[0][colonne].lireCouleurDuJeton()!="Vide"){ 
           return true;
    }
     else{

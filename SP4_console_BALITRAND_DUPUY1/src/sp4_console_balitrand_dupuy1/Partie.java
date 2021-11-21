@@ -93,12 +93,10 @@ public class Partie {
         
         boolean fin=false;
         
+        grilleJeu.afficherGrilleSurConsole();
         
         
         while (fin==false){ // tant que la partie n'est pas finie : 
-            
-
-            grilleJeu.afficherGrilleSurConsole();
             
             
             // Choix de l'action
@@ -106,7 +104,8 @@ public class Partie {
              Scanner sc=new Scanner(System.in);
              
              
-             System.out.println(joueurCourant.Nom + " il vous reste " + joueurCourant.nombreJetonsRestants + " Jetons");
+             System.out.println("Autour du joueur " +  joueurCourant.Couleur);
+             System.out.println(joueurCourant.Nom +" il vous reste " + joueurCourant.nombreJetonsRestants + " Jetons");
              
              System.out.println( joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
              choix = sc.nextInt();
@@ -140,7 +139,6 @@ public class Partie {
               
               boolean validation = grilleJeu.colonneRemplie(colonne); // Verifie si colonne pleine
               
-              System.out.println(validation +" validation");
               
               
               //si la colonne est deja pleine on rejoue
@@ -155,44 +153,25 @@ public class Partie {
               Jeton j;//jeton qui recupere la bonne couleur a ajouter dans la grille
               j =new Jeton (joueurCourant.Couleur) ; // définit un jeton lui même définit par sa couleur
               
-              System.out.println (joueurCourant.Couleur);
-              
-              System.out.println (j.lireCouleur());
-              
               joueurCourant.nombreJetonsRestants--;// A chaque jeton joué on enlève un jeton
               
               
               boolean verification;//On  ajoute j ( de la bonne couleur) dans la colonne choisie 
              
    
- 
- 
-              
               verification = grilleJeu.ajouterJetonDansColonne(j, colonne);  
               
             }
            
             
-            
-            System.out.println(joueurCourant.nombreJetonsRestants); //verifier si code marche, à supprimer
-            
-            grilleJeu.afficherGrilleSurConsole();// verifier si code marche, à supprimer 
-            
-            
-            for (int i=0; i<=5; i++){
-        for (int k=0; k<=6 ; k++){ 
-            
-          System.out.println(grilleJeu.CellulesJeu[i][k].lireCouleurDuJeton());
-            
-         }
-        }
-            
+            grilleJeu.afficherGrilleSurConsole();
             
             
             
            if(grilleJeu.etreGagnanteDuJeton(joueurCourant)==true){ // Arret partie si on a une grille gagnante
                
-               System.out.println("La partie est finie, résultats : " + "Le gagnant est :" + joueurCourant.Nom);
+               System.out.println("La partie est finie, résultats : ");
+               System.out.println("Le gagnant est :" + joueurCourant.Nom);
                
                fin=true;
            }
