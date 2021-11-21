@@ -37,21 +37,24 @@ public class Cellule {
      //ajoute un trou noir à l’endroit indiqué et retourne vrai si l’ajout s’est bien passé, ou faux
         
       
-       if (trouNoir==false){
-           trouNoir = Cellules[i][k];
-           return true;
-       } else {
+       if (trouNoir){
+           
            return false;
-       }         
+       } 
+           trouNoir = true;
+           return true;
+    }         
       
-     }
+     
     
     
     public boolean presenceTrouNoir (){ // VERSION 2 AJOUT TROU NOIR
        if (trouNoir!=false){ //renvoie vrai si un trou noir est présent sur la cellule
-           return true;
+           return trouNoir;
        }
+        return false;
     }
+    
     */
     
     public String lireCouleurDuJeton(){
@@ -63,10 +66,13 @@ public class Cellule {
             return"Vide";
         }
 }
+    
     /*
     public boolean activerTrouNoir (){ //VERSION 2 AJOUT TROU NOIR
-        if (){
-            
+        if (trouNoir){//active le trou noir : le trou noir engloutit le jeton et disparait. Retourne vrai si OK
+            jetonCourant = null;
+            trouNoir = false;
+            System.out.println ("Le pion a disparu, le trou noir l'a fait disparaître");
             return true;
         }else {
             return false;

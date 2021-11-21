@@ -213,15 +213,16 @@ public boolean colonneRemplie(int colonne){
  }
 
 /*
+// ajoute un trou noir à l’endroit indiqué et retourne vrai si l’ajout ok
 public boolean placerTrouNoir (int ligne ,int colonne){ // VERSION 2 
                  
-    if (CellulesJeu[ligne][colonne].trouNoir!=false){
-       CellulesJeu[ligne][colonne].placerTrouNoir();
+    if (CellulesJeu [ligne][colonne].trouNoir == false){
+       placerTrouNoir(ligne,colonne);
         return true; 
     }
-    else if (CellulesJeu[ligne][colonne].trouNoir==false){
+    else {
         return false;
   }
  
-}*/
+ }*/
 }
