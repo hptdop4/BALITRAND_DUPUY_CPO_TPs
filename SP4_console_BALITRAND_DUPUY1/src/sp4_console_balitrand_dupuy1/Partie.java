@@ -66,14 +66,29 @@ public class Partie {
 
         }
         
-        /*
-        // placement des trous noirs
-            for (int i =0; i<=5 ; i++){
-                for (int k = 0; k<=6 ; k++){
-                    grilleJeu.placerTrouNoir(i, k);
-                }
-            }*/
-       
+        
+        // placement des trous noirs aleatoire
+        
+        int colAl;
+        int lignAl;
+        int compteur=0;
+        while (compteur<=5){
+            
+        colAl=(int) ( Math.random()*( 6-0 ));
+        
+        lignAl=(int) (Math.random() * ( 5-0 ));
+            
+        System.out.println(colAl);
+        System.out.println(lignAl);
+        
+        grilleJeu.placerTrouNoir(lignAl, colAl);
+        
+        if(grilleJeu.placerTrouNoir(lignAl, colAl)==false){
+            
+        compteur++;
+        
+        } 
+    }
     }       
     
     public Joueur ProchainJoueur(){
@@ -97,12 +112,27 @@ public class Partie {
        
         initialiserPartie ();
         
-        joueurCourant=J1;
+        
+        //On a decide que le joueur rouge commence (aléatoire)
+        
+        if (J1.Couleur=="Rouge"){
+            
+            joueurCourant=J1;
+        }
+        
+        else if (J2.Couleur=="Rouge"){
+            
+            joueurCourant=J2;
+        }
+        
         
         boolean fin=false;
                 
         grilleJeu.afficherGrilleSurConsole();
         
+        
+        
+        //Depart de la boucle partie
         
         while (fin==false){ // tant que la partie n'est pas finie : 
             

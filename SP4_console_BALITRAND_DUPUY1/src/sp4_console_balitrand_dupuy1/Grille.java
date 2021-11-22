@@ -24,12 +24,8 @@ public class Grille {
     
     public boolean  ajouterJetonDansColonne(Jeton j, int colonne){
         
-        boolean vrai;
-        
-        
         
       if(CellulesJeu[0][colonne].lireCouleurDuJeton()!="Vide"){ 
-          
           
           
           return false;
@@ -115,10 +111,16 @@ public void afficherGrilleSurConsole(){
                System.out.print("\n") ;
             }
             
+            else if (CellulesJeu[i][k].trouNoir==true){
+                
+                System.out.print("T ");
+            }
+            
             else if (CellulesJeu[i][k].jetonCourant==null){
                 
                 System.out.print("N ");
             }
+            
             
             else if (CellulesJeu[i][k].jetonCourant.Couleur=="Rouge"){
                 
@@ -223,17 +225,21 @@ public boolean colonneRemplie(int colonne){
     }
  }
 
-/*
+
 // ajoute un trou noir à l’endroit indiqué et retourne vrai si l’ajout ok
+
 public boolean placerTrouNoir (int ligne ,int colonne){ // VERSION 2 
                  
     if (CellulesJeu [ligne][colonne].trouNoir == false){
-       placerTrouNoir(ligne,colonne);
+       
+        CellulesJeu [ligne][colonne].placerTrouNoir();
         return true; 
     }
     else {
         return false;
   }
  
- }*/
+ }
+
+
 }

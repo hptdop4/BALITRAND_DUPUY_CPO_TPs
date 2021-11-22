@@ -10,13 +10,13 @@ package sp4_console_balitrand_dupuy1;
 public class Cellule {
     
     Jeton jetonCourant;
-    boolean desintegrateur=false;
+    boolean desintegrateur=false;//V4
     boolean trouNoir ; //VERSION 2 AJOUT TROU NOIR
     
     public Cellule() { 
     
        jetonCourant=null;
-       desintegrateur=false;
+       desintegrateur=false;// V4
        trouNoir = false; //VERSION 2 AJOUT TROU NOIR
    }
     
@@ -42,30 +42,36 @@ public class Cellule {
     
     
     
-    /*//VERSION 2 AJOUT TROU NOIR
+    //VERSION 2 AJOUT TROU NOIR
+    
+    
     public boolean placerTrouNoir (){ 
      //ajoute un trou noir à l’endroit indiqué et retourne vrai si l’ajout s’est bien passé, ou faux
         
-      
-       if (trouNoir){
+     
+       if (trouNoir==true){
            
            return false;
        } 
+       else{   
            trouNoir = true;
+           
            return true;
-    }         
+    }       }  
       
      
     
     
     public boolean presenceTrouNoir (){ // VERSION 2 AJOUT TROU NOIR
-       if (trouNoir!=false){ //renvoie vrai si un trou noir est présent sur la cellule
-           return trouNoir;
+       if (trouNoir== true){ //renvoie vrai si un trou noir est présent sur la cellule
+           return true;
        }
-        return false;
+        else {
+           return false;
+       }
     }
     
-    */
+    
     
     public String lireCouleurDuJeton(){
         
