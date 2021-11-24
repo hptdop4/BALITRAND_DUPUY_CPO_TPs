@@ -34,11 +34,12 @@ public class Cellule {
     }
     //VERSION 3 renvoie une référence vers le jeton de la cellule
 
-   // public Jeton recupererJeton (){
-   //     Jeton jetonCellule =jetonCourant;
-   //     jetonCourant =null;
-   //     return jetonCellule;
-  //  } 
+   public Jeton recupererJeton (){
+       
+        Jeton jetonCellule = jetonCourant;
+        jetonCourant =null;
+        return jetonCellule;
+    } 
     
     
     
@@ -83,15 +84,5 @@ public class Cellule {
         }
 }
     
-    /*
-    public boolean activerTrouNoir (){ //VERSION 2 AJOUT TROU NOIR
-        if (trouNoir){//active le trou noir : le trou noir engloutit le jeton et disparait. Retourne vrai si OK
-            jetonCourant = null;
-            trouNoir = false;
-            System.out.println ("Le pion a disparu, le trou noir l'a fait disparaître");
-            return true;
-        }else {
-            return false;
-        }
-    }*/
+   
 }
