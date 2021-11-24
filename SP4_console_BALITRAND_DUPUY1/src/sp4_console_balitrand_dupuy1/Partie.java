@@ -206,11 +206,10 @@ public class Partie {
               }
               
               
-            }
-            
-           
-            
-            grilleJeu.afficherGrilleSurConsole();
+              
+              
+              
+              grilleJeu.afficherGrilleSurConsole();
             
             
             
@@ -241,7 +240,118 @@ public class Partie {
                joueurCourant=ProchainJoueur();
            }
         }
+    
+            
+            
+            else if (choix==2){
+                
+                int recupColonne;
+                int recupLigne;
+                
+                System.out.println ("Vous allez récupérer un jeton de votre couleur");
+                System.out.println ("Saisissez la colonne du jeton (de 0 a 6 en commençant à gauche) ");
+                recupColonne=sc.nextInt();
+                
+                System.out.println ("Saisissez la ligne du jeton (de 0 a 5 en commençant en haut) ");
+                recupLigne=sc.nextInt();
+                
+                //verification que l'on veut retirer un jeton qui nous appartient
+                
+                while (joueurCourant.Couleur != grilleJeu.lireCouleurDuJeton(recupLigne, recupColonne)){
+                    
+                    
+                System.out.println ("Erreur ce jeton n'est pas à vous.");
+                System.out.println ("Saisissez la colonne du jeton (de 0 a 6 en commençant à gauche) ");
+                recupColonne=sc.nextInt();
+                
+                System.out.println ("Saisissez la ligne du jeton (de 0 a 5 en commençant en haut) ");
+                recupLigne=sc.nextInt();
+                    
+                }
+                
+                grilleJeu.afficherGrilleSurConsole();
+                
+                grilleJeu.recupererJeton(recupLigne, recupColonne);
+                
+                grilleJeu.afficherGrilleSurConsole();
+                
+                joueurCourant.nombreJetonsRestants++;
+                
+                grilleJeu.tasserGrille(recupLigne, recupColonne);
+                
+               
+                
+            
+            grilleJeu.afficherGrilleSurConsole();
+            
+            
+            
+            int nbrGagnant=0;
+            String nomGagnant=" ";
+            
+            
+            
+           if(grilleJeu.etreGagnanteDuJeton(J1)==true){ // Arret partie si on a une grille gagnante
+               
+               System.out.println( J1.Nom + " a aligné sufisamment de jetons");
+               
+               nbrGagnant++;
+               
+               nomGagnant=J1.Nom;
+               
+               fin=true;
+           }
+           
+           if(grilleJeu.etreGagnanteDuJeton(J2)==true){ // Arret partie si on a une grille gagnante
+               
+               System.out.println( J2.Nom + " a aligné sufisamment de jetons");
+               
+               nbrGagnant++;
+               
+               nomGagnant=J2.Nom;
+               
+               fin=true;
+           }
+           
+           if(nbrGagnant!=0){
+               
+               if (nbrGagnant == 1){
+                   
+                   System.out.println( "Après tassement nous avons un gagnant : " + nomGagnant);
+                   
+               }
+               else{
+                   System.out.println( joueurCourant.Nom + " a causé une égalité.");
+                   System.out.println("Le vainqueur est donc : " + ProchainJoueur().Nom);
+               }
+               
+               
+           }
+           
+           else{
+           
+           if(grilleJeu.etreRemplie()== true){// Arret partie si on a une grille remplie
+               
+               System.out.println("La grille est pleine, fin de la partie ");
+               
+               fin = true;
+           }
+           
+           else if(J1.nombreJetonsRestants==0 && J2.nombreJetonsRestants==0){// Arret partie si le joueur n'a plus de jetons 
+               
+               System.out.println("Les joueurs n'ont plus de jetons. Egalité. ");
+               
+               fin = true;
+           }
+           
+           
+           else{
+               
+               joueurCourant=ProchainJoueur();
+           }
+        }
     }
+}}
 }
     
     
