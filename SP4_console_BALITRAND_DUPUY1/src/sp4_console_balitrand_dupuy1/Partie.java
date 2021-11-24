@@ -72,7 +72,10 @@ public class Partie {
         int colAl;
         int lignAl;
         int compteur=0;
-        while (compteur<=5){
+        int Des=0;
+        
+        
+        while (compteur<5){
             
         colAl=(int) ( Math.random()*( 6-0 ));
         // on va chercher un int aléatoire pour la colonne aléatoire entre 6 et 0
@@ -82,11 +85,39 @@ public class Partie {
         grilleJeu.placerTrouNoir(lignAl, colAl);
         
         if(grilleJeu.placerTrouNoir(lignAl, colAl)==false){
-            
+    ///////////////////////////////////////////////////////////////////////////// ICI CONTINUER        
         compteur++;
+        if (Des < 3)
+         Des++;
         
         } 
     }
+        
+      // placement des 3 trous noirs restants  
+        
+      int colAlDes;
+      int lignAlDes;
+      int compteDes=0;
+      
+      while(compteDes < 3){
+      
+      colAlDes=(int) ( Math.random()*( 6-0 ));
+        // on va chercher un int aléatoire pour la colonne aléatoire entre 6 et 0
+        lignAlDes=(int) (Math.random() * ( 5-0 ));
+        // on va chercher un int aléatoire pour la ligne aléatoire entre 5 et 0
+        
+        
+       if(grilleJeu.CellulesJeu[lignAlDes][colAlDes].trouNoir==false){
+            
+           if(grilleJeu.CellulesJeu[lignAlDes][colAlDes].desintegrateur==false){
+           
+               grilleJeu.placerDesintegrateur(lignAlDes , colAlDes); 
+           
+               compteDes++; 
+        
+           }
+       }
+      }
     }       
     
     public Joueur ProchainJoueur(){
@@ -113,12 +144,12 @@ public class Partie {
         
         //On a decide que le joueur rouge commence (aléatoire)
         
-        if (J1.Couleur=="Rouge"){
+        if ("Rouge".equals(J1.Couleur)){
             
             joueurCourant=J1;
         }
         
-        else if (J2.Couleur=="Rouge"){
+        else if ("Rouge".equals(J2.Couleur)){
             
             joueurCourant=J2;
         }
@@ -257,7 +288,7 @@ public class Partie {
                 
                 //verification que l'on veut retirer un jeton qui nous appartient
                 
-                while (joueurCourant.Couleur != grilleJeu.lireCouleurDuJeton(recupLigne, recupColonne)){
+                while (!joueurCourant.Couleur.equals(grilleJeu.lireCouleurDuJeton(recupLigne, recupColonne))){
                     
                     
                 System.out.println ("Erreur ce jeton n'est pas à vous.");

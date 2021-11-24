@@ -84,5 +84,19 @@ public class Cellule {
         }
 }
     
-   
+    public boolean placerDesintegrateur (){ 
+     //ajoute un desintegrateur à l’endroit indiqué et retourne vrai si l’ajout s’est bien passé
+        
+       if (desintegrateur==true){
+           
+           return false;
+       } 
+       else{   
+           desintegrateur = true;
+           
+           return true;
+    }       
+    }  
+      
+    
 }
