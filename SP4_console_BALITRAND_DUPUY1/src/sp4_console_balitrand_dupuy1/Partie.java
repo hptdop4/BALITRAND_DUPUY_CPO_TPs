@@ -75,11 +75,9 @@ public class Partie {
         while (compteur<=5){
             
         colAl=(int) ( Math.random()*( 6-0 ));
-        
+        // on va chercher un int aléatoire pour la colonne aléatoire entre 6 et 0
         lignAl=(int) (Math.random() * ( 5-0 ));
-            
-        System.out.println(colAl);
-        System.out.println(lignAl);
+        // on va chercher un int aléatoire pour la ligne aléatoire entre 5 et 0 
         
         grilleJeu.placerTrouNoir(lignAl, colAl);
         
@@ -142,7 +140,7 @@ public class Partie {
              Scanner sc=new Scanner(System.in);
              
              
-             System.out.println("Autour du joueur " +  joueurCourant.Couleur);
+             System.out.println("Au tour du joueur " +  joueurCourant.Couleur);
              System.out.println(joueurCourant.Nom +" il vous reste " + joueurCourant.nombreJetonsRestants + " Jetons");
              
              System.out.println( joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
@@ -195,9 +193,18 @@ public class Partie {
               
               
               boolean verification;//On  ajoute j ( de la bonne couleur) dans la colonne choisie 
-             
+              boolean changejoueur=true;
    
-              verification = grilleJeu.ajouterJetonDansColonne(j, colonne);  
+              verification = grilleJeu.ajouterJetonDansColonne(j, colonne);
+              
+              
+              if (verification==false){
+                  
+                  System.out.println ("Oh non un trou noir est apparu, votre jeton a été avalé !");
+
+                  System.out.println ("Au tour du joueur suivant");
+              }
+              
               
             }
             
@@ -220,15 +227,20 @@ public class Partie {
                
                fin = true;
            }
+           
+           else if(J1.nombreJetonsRestants==0 && J2.nombreJetonsRestants==0){// Arret partie si le joueur n'a plus de jetons 
+               
+               System.out.println("Les joueurs n'ont plus de jetons. Egalité. ");
+               
+               fin = true;
+           }
+           
+           
            else{
                
                joueurCourant=ProchainJoueur();
            }
         }
-        
-        
-   
-       
     }
 }
     

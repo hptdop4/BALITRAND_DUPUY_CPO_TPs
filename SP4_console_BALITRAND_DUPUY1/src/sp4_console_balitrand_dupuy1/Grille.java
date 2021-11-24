@@ -37,26 +37,44 @@ public class Grille {
               
                if (CellulesJeu[i][colonne].lireCouleurDuJeton()=="Rouge" || CellulesJeu[i][colonne].lireCouleurDuJeton()=="Jaune" ){
               
-                  
-                  CellulesJeu[i-1][colonne].affecterJeton(j); 
-                  
+                  if (CellulesJeu[i-1][colonne].trouNoir==true){
+                      
+                      CellulesJeu[i-1][colonne].trouNoir=false;
+                      
+                      return false;
+                      
+                  }
+                   
+                  else{
+                   
+                  CellulesJeu[i-1][colonne].affecterJeton(j);
+                  return true;
+                  }
                   
               }
               
                else if(i==5 && CellulesJeu[i][colonne].lireCouleurDuJeton()=="Vide"){
                   
                  
-                  if ("Vide".equals(CellulesJeu[5][colonne].lireCouleurDuJeton()))
+                  if (CellulesJeu[i][colonne].trouNoir==true){
+                      
+                      CellulesJeu[i][colonne].trouNoir=false;
+                      
+                      return false;}
+                          
+                          
+                  else {       
                   
                       CellulesJeu[i][colonne].affecterJeton(j);
+                      return true;
                  
               }
           }
-          
-              return true;
-          
-      }
-    }
+          }
+          return true;
+    }}
+      
+      
     
     public boolean etreRemplie(){
         boolean test=true;
