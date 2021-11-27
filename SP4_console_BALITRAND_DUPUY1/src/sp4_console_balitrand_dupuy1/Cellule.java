@@ -96,7 +96,42 @@ public class Cellule {
            
            return true;
     }       
-    }  
-      
+    }
+    
+    public boolean presenceDesintegrateur (){ 
+        
+        if (desintegrateur==true){
+           
+           return true;
+       } 
+       else{   
+           
+           return false;
+        
+    }
+    }
+    
+    public boolean supprimerJeton(){ 
+    
+       jetonCourant.Couleur=null;
+       return true;
+          
+    }
+    
+   public boolean recupererDesintegrateur (){
+       
+      if (desintegrateur==true){
+          
+          desintegrateur=false;
+           
+           return true;
+       } 
+       
+      else{   
+           
+           return false;
+        
+    }   
+   }
     
 }

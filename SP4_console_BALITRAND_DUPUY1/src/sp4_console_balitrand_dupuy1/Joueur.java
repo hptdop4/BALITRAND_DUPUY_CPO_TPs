@@ -13,6 +13,7 @@ public class Joueur {
     String Couleur;
     Jeton [] ListeJetons = new Jeton[21];
     int nombreJetonsRestants;
+    int nombreDesintegrateurs;
     
     //methode pour definir rapidement un nouvel objet de classe  Joueur
     
@@ -20,6 +21,7 @@ public class Joueur {
     
        Nom=unNom;
        nombreJetonsRestants=0;
+       nombreDesintegrateurs=0;
    }
     
     public void affecterCouleur(String UneCouleur){

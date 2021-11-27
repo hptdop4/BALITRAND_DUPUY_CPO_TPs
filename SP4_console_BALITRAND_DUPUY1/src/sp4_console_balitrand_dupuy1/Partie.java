@@ -84,16 +84,23 @@ public class Partie {
         
         grilleJeu.placerTrouNoir(lignAl, colAl);
         
-        if(grilleJeu.placerTrouNoir(lignAl, colAl)==false){
-    ///////////////////////////////////////////////////////////////////////////// ICI CONTINUER        
-        compteur++;
-        if (Des < 3)
-         Des++;
+        if(grilleJeu.CellulesJeu[lignAl][colAl].trouNoir==true){
+            
+            compteur++;
+            
+            if (Des < 2 && grilleJeu.CellulesJeu[lignAl][colAl].desintegrateur==false){
+           
+                 grilleJeu.placerDesintegrateur(lignAl , colAl); 
+                 
+                 Des++;
+                  
+                }}
         
-        } 
-    }
+        }
         
-      // placement des 3 trous noirs restants  
+    
+        
+      // placement des 3 desintegrateurs restants  
         
       int colAlDes;
       int lignAlDes;
@@ -189,6 +196,27 @@ public class Partie {
                  choix = sc.nextInt();
             }
             
+            while (choix==3 && joueurCourant.nombreDesintegrateurs==0){
+                
+                System.out.println("Choix non valide, vous avez actuellement 0 desintegrateur. Rejouez");
+                
+                 System.out.println(joueurCourant.Nom + " il vous reste " + joueurCourant.nombreJetonsRestants + " Jetons");
+                 System.out.println(joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
+                 choix = sc.nextInt();
+                
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             // Si il choisit de jouer un jeton :
             if (choix == 1){
               
@@ -224,7 +252,7 @@ public class Partie {
               
               
               boolean verification;//On  ajoute j ( de la bonne couleur) dans la colonne choisie 
-              boolean changejoueur=true;
+              
    
               verification = grilleJeu.ajouterJetonDansColonne(j, colonne);
               
@@ -382,6 +410,8 @@ public class Partie {
            }
         }
     }
+            
+            System.out.println(joueurCourant.nombreDesintegrateurs);
 }}
 }
     
