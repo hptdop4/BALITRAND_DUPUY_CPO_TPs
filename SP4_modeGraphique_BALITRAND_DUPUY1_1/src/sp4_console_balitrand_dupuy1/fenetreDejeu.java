@@ -4,6 +4,9 @@
  */
 package sp4_console_balitrand_dupuy1;
 
+import java.util.Scanner;
+import java.util.Random;
+
 /**
  *
  * @author ROXANA
@@ -140,6 +143,12 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
         jLabel2.setText("Nom joueur 2 : ");
         panneau_creation_partie.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 20));
+
+        nom_joueur1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nom_joueur1ActionPerformed(evt);
+            }
+        });
         panneau_creation_partie.add(nom_joueur1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 110, -1));
         panneau_creation_partie.add(nom_joueur2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 110, -1));
 
@@ -202,7 +211,13 @@ public class fenetreDejeu extends javax.swing.JFrame {
         // TODO add your handling code here:
         panneau_infos_joueurs.setVisible(true);
         panneau_info_partie.setVisible(true);
+        initialiserPartie ();
+        
     }//GEN-LAST:event_btn_startActionPerformed
+
+    private void nom_joueur1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nom_joueur1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nom_joueur1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,6 +253,99 @@ public class fenetreDejeu extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+     
+    public void initialiserPartie (){
+  
+    
+        grilleJeu = new Grille() ; // création grille 
+        
+        
+        System.out.println("Début de la partie de puissance 4 !");
+        
+        
+        //attribution nom aux joueurs
+        String nom1=nom_joueur1.getText();
+        String nom2=nom_joueur2.getText();
+        
+        
+        Joueur joueur1 = new Joueur(nom1) ;//Création des deux joueurs
+        Joueur joueur2 = new Joueur(nom2) ;
+        
+       
+       ListeJoueur[0]=joueur1;
+       ListeJoueur[1]=joueur2;
+        
+       
+        attribuerCouleursAuxJoueurs ();
+        
+        System.out.println(joueur1.Nom + " est de couleur " + joueur1.Couleur);
+        System.out.println(joueur2.Nom + " est de couleur " + joueur2.Couleur);
+        
+        
+// attribution des jetons aux joueurs
+        
+        
+        
+        for (int t=0; t<=20; t++){
+        
+      Jeton jetonj1 = new Jeton(ListeJoueur[0].Couleur);
+      ListeJoueur[0].ajouterJeton(jetonj1);
+      
+      
+      
+      Jeton jetonj2 = new Jeton( ListeJoueur[1].Couleur);
+       ListeJoueur[1].ajouterJeton(jetonj2);
+
+        }
+        
+        
+        // placement des trous noirs aleatoire
+        
+        int colAl;
+        int lignAl;
+        int compteur=0;
+        
+        
+        while (compteur<=5){
+            
+        colAl=(int) ( Math.random()*( 6-0 ));
+        // on va chercher un int aléatoire pour la colonne aléatoire entre 6 et 0
+        lignAl=(int) (Math.random() * ( 5-0 ));
+        // on va chercher un int aléatoire pour la ligne aléatoire entre 5 et 0 
+        
+        grilleJeu.placerTrouNoir(lignAl, colAl);
+        
+        if(grilleJeu.CellulesJeu[lignAl][colAl].trouNoir==true){
+            
+            compteur++;
+        } 
+    }
+    }
+    
+    
+    public void attribuerCouleursAuxJoueurs (){
+        
+        Random rand = new Random();
+        boolean quellecouleur;
+        quellecouleur=rand.nextBoolean();
+        
+        if (quellecouleur==true){
+        
+        ListeJoueur[0].Couleur="Jaune";
+        ListeJoueur[1].Couleur="Rouge";
+        }
+        else if (quellecouleur==false){
+        
+        ListeJoueur[1].Couleur="Jaune";
+        ListeJoueur[0].Couleur="Rouge";
+        }
+        
+    }
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_col_0;

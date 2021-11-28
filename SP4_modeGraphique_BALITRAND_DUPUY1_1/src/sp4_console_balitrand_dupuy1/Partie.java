@@ -50,6 +50,31 @@ public class Partie {
         grilleJeu = new Grille() ; // création grille 
         
         
+        System.out.println("Début de la partie de puissance 4 !");
+        
+        
+        //attribution nom aux joueurs
+        String nom1;
+        String nom2;
+        
+        
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Joueur 1 quel est votre pseudo ? ");
+        nom1 = sc.nextLine();
+        System.out.println("Joueur 2 quel est votre pseudo ? ");
+        nom2 = sc.nextLine();
+        
+        
+        Joueur joueur1 = new Joueur(nom1) ;//Création des deux joueurs
+        Joueur joueur2 = new Joueur(nom2) ;
+        
+       
+       ListeJoueur[0]=joueur1;
+       ListeJoueur[1]=joueur2;
+        
+        
+        attribuerCouleursAuxJoueurs ();
+        
 // attribution des jetons aux joueurs
         
         
@@ -107,8 +132,6 @@ public class Partie {
     public void debuterPartie (){
         
         
-        attribuerCouleursAuxJoueurs ();
-       
         initialiserPartie ();
         
         
