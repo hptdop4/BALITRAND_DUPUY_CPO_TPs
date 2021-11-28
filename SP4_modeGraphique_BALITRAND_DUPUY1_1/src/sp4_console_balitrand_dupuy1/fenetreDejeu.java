@@ -10,11 +10,28 @@ package sp4_console_balitrand_dupuy1;
  */
 public class fenetreDejeu extends javax.swing.JFrame {
 
+    Joueur[] ListeJoueur = new Joueur[2];//tableau des deux joueurs de la partie
+
+    Joueur joueurCourant;//désigne le joueur courant à tout moment de la partie
+    Grille grilleJeu =new Grille ();//la grille de jeu
+
+    Joueur J1;
+    Joueur J2;
+
     /**
      * Creates new form fenetreDejeu
      */
     public fenetreDejeu() {
         initComponents();
+        panneau_infos_joueurs.setVisible(false);
+        panneau_info_partie.setVisible(false);
+
+        for (int i = 0; i <= 5; i++) { //La case 0,0 dans notre code est en haut à gauche
+           for (int j = 0; j < 7; j++) {
+           CelluleGraphique cellGraph = new CelluleGraphique(grilleJeu.CellulesJeu[i][j]);
+           panneau_grille.add(cellGraph);
+            }
+        }
     }
 
     /**
@@ -127,6 +144,11 @@ public class fenetreDejeu extends javax.swing.JFrame {
         panneau_creation_partie.add(nom_joueur2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 110, -1));
 
         btn_start.setText("Démarrer la partie");
+        btn_start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_startActionPerformed(evt);
+            }
+        });
         panneau_creation_partie.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 90, 160, -1));
 
         getContentPane().add(panneau_creation_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 290, 140));
@@ -175,6 +197,12 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
         setBounds(0, 0, 1044, 702);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
+        // TODO add your handling code here:
+        panneau_infos_joueurs.setVisible(true);
+        panneau_info_partie.setVisible(true);
+    }//GEN-LAST:event_btn_startActionPerformed
 
     /**
      * @param args the command line arguments
