@@ -72,7 +72,7 @@ public class Partie {
         int colAl;
         int lignAl;
         int compteur=0;
-        int Des=0;
+       // int Des=0;
         
         
         while (compteur<5){
@@ -87,7 +87,7 @@ public class Partie {
         if(grilleJeu.CellulesJeu[lignAl][colAl].trouNoir==true){
             
             compteur++;
-            
+            /*
             if (Des < 2 && grilleJeu.CellulesJeu[lignAl][colAl].desintegrateur==false){
            
                  grilleJeu.placerDesintegrateur(lignAl , colAl); 
@@ -95,11 +95,11 @@ public class Partie {
                  Des++;
                   
                 }}
-        
+        */
         }
         
     
-        
+        /*
       // placement des 3 desintegrateurs restants  
         
       int colAlDes;
@@ -125,7 +125,8 @@ public class Partie {
            }
        }
       }
-    }       
+*/
+    }}       
     
     public Joueur ProchainJoueur(){
         
@@ -181,21 +182,21 @@ public class Partie {
              System.out.println("Au tour du joueur " +  joueurCourant.Couleur);
              System.out.println(joueurCourant.Nom +" il vous reste " + joueurCourant.nombreJetonsRestants + " Jetons");
              
-             System.out.println( joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
+             System.out.println( joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" );
              choix = sc.nextInt();
              
             //On vérifie si il choisit bien un nombre parmi les choix proposés
 
-            while(choix!= 1 && choix !=2 && choix!=3){
+            while(choix!= 1 && choix !=2){
                 
                 
                  System.out.println("Choix non valide, rejouez");
                  
                  System.out.println(joueurCourant.Nom + " il vous reste " + joueurCourant.nombreJetonsRestants + " Jetons");
-                 System.out.println(joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
+                 System.out.println(joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton");
                  choix = sc.nextInt();
             }
-            
+            /*
             while (choix==3 && joueurCourant.nombreDesintegrateurs==0){
                 
                 System.out.println("Choix non valide, vous avez actuellement 0 desintegrateur. Rejouez");
@@ -206,7 +207,7 @@ public class Partie {
                 
             }
             
-            
+            */
             
             
             
@@ -328,9 +329,12 @@ public class Partie {
                     
                 }
                 
+                System.out.println ("----------------------");
                 grilleJeu.afficherGrilleSurConsole();
                 
                 grilleJeu.recupererJeton(recupLigne, recupColonne);
+                
+                System.out.println ("----------------------");
                 
                 grilleJeu.afficherGrilleSurConsole();
                 
@@ -339,7 +343,7 @@ public class Partie {
                 grilleJeu.tasserGrille(recupLigne, recupColonne);
                 
                
-                
+                System.out.println ("----------------------");
             
             grilleJeu.afficherGrilleSurConsole();
             
@@ -411,7 +415,7 @@ public class Partie {
         }
     }
             
-            System.out.println(joueurCourant.nombreDesintegrateurs);
+           // System.out.println(joueurCourant.nombreDesintegrateurs);
 }}
 }
     

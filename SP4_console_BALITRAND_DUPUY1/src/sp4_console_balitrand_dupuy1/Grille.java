@@ -132,26 +132,18 @@ public void afficherGrilleSurConsole(){
             else if (CellulesJeu[i][k].trouNoir==true){
                 
                 
-                if(CellulesJeu[i][k].desintegrateur==true){
-                    
-                    System.out.print("\u001B[32m"+"T ");
-                    System.out.print("\u001B[0m");
-                    
-                }
-                
-                else{
-                    
                 System.out.print("\u001B[35m"+"T ");
                 System.out.print("\u001B[0m");
                 }
                 
-            }
             
+            /*
             else if (CellulesJeu[i][k].desintegrateur==true){
                 
                 System.out.print("\u001B[32m"+"D ");
                 System.out.print("\u001B[0m");
             }
+            */
             
             else if (CellulesJeu[i][k].jetonCourant==null){
                 
@@ -256,6 +248,11 @@ public void tasserGrille (int ligne, int colonne){
          
         CellulesJeu[i][colonne].jetonCourant=CellulesJeu[i-1][colonne].jetonCourant;
          }
+         
+         else if(CellulesJeu[i-1][colonne].jetonCourant== null ){
+             
+             CellulesJeu[i][colonne].jetonCourant=null;
+         }
         
     }
     
@@ -304,7 +301,7 @@ public boolean placerTrouNoir (int ligne ,int colonne){ // VERSION 2
 
 
 // ajoute un désintégrateur à l’endroit indiqué et retourne vrai  si ok
-
+/*
 
 public boolean  placerDesintegrateur(int ligne , int colonne){
     
@@ -320,6 +317,6 @@ public boolean  placerDesintegrateur(int ligne , int colonne){
     
     
 }
-
+*/
 }
 

@@ -16,7 +16,7 @@ public class Cellule {
     public Cellule() { 
     
        jetonCourant=null;
-       desintegrateur=false;// V4
+       ///desintegrateur=false;// V4
        trouNoir = false; //VERSION 2 AJOUT TROU NOIR
    }
     
@@ -83,7 +83,8 @@ public class Cellule {
             return"Vide";
         }
 }
-    
+}
+    /*
     public boolean placerDesintegrateur (){ 
      //ajoute un desintegrateur à l’endroit indiqué et retourne vrai si l’ajout s’est bien passé
         
@@ -135,3 +136,5 @@ public class Cellule {
    }
     
 }
+
+    */
