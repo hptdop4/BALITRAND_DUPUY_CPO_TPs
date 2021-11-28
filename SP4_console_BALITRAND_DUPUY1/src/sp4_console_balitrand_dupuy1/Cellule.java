@@ -10,7 +10,7 @@ package sp4_console_balitrand_dupuy1;
 public class Cellule {
     
     Jeton jetonCourant;
-    boolean desintegrateur=false;//V4
+   // boolean desintegrateur=false;//V4
     boolean trouNoir ; //VERSION 2 AJOUT TROU NOIR
     
     public Cellule() { 
