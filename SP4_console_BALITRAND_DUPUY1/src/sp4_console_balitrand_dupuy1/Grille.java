@@ -131,8 +131,20 @@ public void afficherGrilleSurConsole(){
             
             else if (CellulesJeu[i][k].trouNoir==true){
                 
+                
+                if(CellulesJeu[i][k].desintegrateur==true){
+                    
+                    System.out.print("\u001B[32m"+"T ");
+                    System.out.print("\u001B[0m");
+                    
+                }
+                
+                else{
+                    
                 System.out.print("\u001B[35m"+"T ");
                 System.out.print("\u001B[0m");
+                }
+                
             }
             
             else if (CellulesJeu[i][k].desintegrateur==true){
