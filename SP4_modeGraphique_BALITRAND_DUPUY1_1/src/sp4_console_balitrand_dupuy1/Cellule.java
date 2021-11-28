@@ -10,13 +10,13 @@ package sp4_console_balitrand_dupuy1;
 public class Cellule {
     
     Jeton jetonCourant;
-    boolean desintegrateur=false;//V4
+    //boolean desintegrateur=false;//V4
     boolean trouNoir ; //VERSION 2 AJOUT TROU NOIR
     
     public Cellule() { 
     
        jetonCourant=null;
-       desintegrateur=false;// V4
+       //desintegrateur=false;// V4
        trouNoir = false; //VERSION 2 AJOUT TROU NOIR
    }
     
@@ -32,13 +32,15 @@ public class Cellule {
         }
         
     }
-    //VERSION 3 renvoie une référence vers le jeton de la cellule
+    
+//VERSION 3 renvoie une référence vers le jeton de la cellule
 
-   // public Jeton recupererJeton (){
-   //     Jeton jetonCellule =jetonCourant;
-   //     jetonCourant =null;
-   //     return jetonCellule;
-  //  } 
+   public Jeton recupererJeton (){
+       
+        Jeton jetonCellule = jetonCourant;
+        jetonCourant =null;
+        return jetonCellule;
+    } 
     
     
     

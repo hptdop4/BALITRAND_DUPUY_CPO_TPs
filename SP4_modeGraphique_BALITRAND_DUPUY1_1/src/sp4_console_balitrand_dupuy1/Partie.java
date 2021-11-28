@@ -72,6 +72,8 @@ public class Partie {
         int colAl;
         int lignAl;
         int compteur=0;
+        
+        
         while (compteur<=5){
             
         colAl=(int) ( Math.random()*( 6-0 ));
@@ -81,10 +83,9 @@ public class Partie {
         
         grilleJeu.placerTrouNoir(lignAl, colAl);
         
-        if(grilleJeu.placerTrouNoir(lignAl, colAl)==false){
+        if(grilleJeu.CellulesJeu[lignAl][colAl].trouNoir==true){
             
-        compteur++;
-        
+            compteur++;
         } 
     }
     }       
@@ -132,7 +133,7 @@ public class Partie {
         
         //Depart de la boucle partie
         
-        while (fin==false){ // tant que la partie n'est pas finie : 
+         while (fin==false){ // tant que la partie n'est pas finie : 
             
             
             // Choix de l'action
@@ -143,20 +144,41 @@ public class Partie {
              System.out.println("Au tour du joueur " +  joueurCourant.Couleur);
              System.out.println(joueurCourant.Nom +" il vous reste " + joueurCourant.nombreJetonsRestants + " Jetons");
              
-             System.out.println( joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
+             System.out.println( joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" );
              choix = sc.nextInt();
              
             //On vérifie si il choisit bien un nombre parmi les choix proposés
 
-            while(choix!= 1 && choix !=2 && choix!=3){
+            while(choix!= 1 && choix !=2){
                 
                 
                  System.out.println("Choix non valide, rejouez");
                  
                  System.out.println(joueurCourant.Nom + " il vous reste " + joueurCourant.nombreJetonsRestants + " Jetons");
-                 System.out.println(joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
+                 System.out.println(joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton");
                  choix = sc.nextInt();
             }
+            /*
+            while (choix==3 && joueurCourant.nombreDesintegrateurs==0){
+                
+                System.out.println("Choix non valide, vous avez actuellement 0 desintegrateur. Rejouez");
+                
+                 System.out.println(joueurCourant.Nom + " il vous reste " + joueurCourant.nombreJetonsRestants + " Jetons");
+                 System.out.println(joueurCourant.Nom +" : Faites votre choix : " + "\n 1 : jouer un jeton" + "\n 2 : récupérer un jeton" + " \n 3 : désintégrer un jeton");
+                 choix = sc.nextInt();
+                
+            }
+            
+            */
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             // Si il choisit de jouer un jeton :
             if (choix == 1){
@@ -193,7 +215,7 @@ public class Partie {
               
               
               boolean verification;//On  ajoute j ( de la bonne couleur) dans la colonne choisie 
-              boolean changejoueur=true;
+              
    
               verification = grilleJeu.ajouterJetonDansColonne(j, colonne);
               
@@ -206,11 +228,10 @@ public class Partie {
               }
               
               
-            }
-            
-           
-            
-            grilleJeu.afficherGrilleSurConsole();
+              
+              
+              
+              grilleJeu.afficherGrilleSurConsole();
             
             
             
@@ -241,7 +262,123 @@ public class Partie {
                joueurCourant=ProchainJoueur();
            }
         }
+    
+            
+            
+            else if (choix==2){
+                
+                int recupColonne;
+                int recupLigne;
+                
+                System.out.println ("Vous allez récupérer un jeton de votre couleur");
+                System.out.println ("Saisissez la colonne du jeton (de 0 a 6 en commençant à gauche) ");
+                recupColonne=sc.nextInt();
+                
+                System.out.println ("Saisissez la ligne du jeton (de 0 a 5 en commençant en haut) ");
+                recupLigne=sc.nextInt();
+                
+                //verification que l'on veut retirer un jeton qui nous appartient
+                
+                while (!joueurCourant.Couleur.equals(grilleJeu.lireCouleurDuJeton(recupLigne, recupColonne))){
+                    
+                    
+                System.out.println ("Erreur ce jeton n'est pas à vous.");
+                System.out.println ("Saisissez la colonne du jeton (de 0 a 6 en commençant à gauche) ");
+                recupColonne=sc.nextInt();
+                
+                System.out.println ("Saisissez la ligne du jeton (de 0 a 5 en commençant en haut) ");
+                recupLigne=sc.nextInt();
+                    
+                }
+                
+                System.out.println ("----------------------");
+                grilleJeu.afficherGrilleSurConsole();
+                
+                grilleJeu.recupererJeton(recupLigne, recupColonne);
+                
+                System.out.println ("----------------------");
+                
+                grilleJeu.afficherGrilleSurConsole();
+                
+                joueurCourant.nombreJetonsRestants++;
+                
+                grilleJeu.tasserGrille(recupLigne, recupColonne);
+                
+               
+                System.out.println ("----------------------");
+            
+            grilleJeu.afficherGrilleSurConsole();
+            
+            
+            
+            int nbrGagnant=0;
+            String nomGagnant=" ";
+            
+            
+            
+           if(grilleJeu.etreGagnanteDuJeton(J1)==true){ // Arret partie si on a une grille gagnante
+               
+               System.out.println( J1.Nom + " a aligné sufisamment de jetons");
+               
+               nbrGagnant++;
+               
+               nomGagnant=J1.Nom;
+               
+               fin=true;
+           }
+           
+           if(grilleJeu.etreGagnanteDuJeton(J2)==true){ // Arret partie si on a une grille gagnante
+               
+               System.out.println( J2.Nom + " a aligné sufisamment de jetons");
+               
+               nbrGagnant++;
+               
+               nomGagnant=J2.Nom;
+               
+               fin=true;
+           }
+           
+           if(nbrGagnant!=0){
+               
+               if (nbrGagnant == 1){
+                   
+                   System.out.println( "Après tassement nous avons un gagnant : " + nomGagnant);
+                   
+               }
+               else{
+                   System.out.println( joueurCourant.Nom + " a causé une égalité.");
+                   System.out.println("Le vainqueur est donc : " + ProchainJoueur().Nom);
+               }
+               
+               
+           }
+           
+           else{
+           
+           if(grilleJeu.etreRemplie()== true){// Arret partie si on a une grille remplie
+               
+               System.out.println("La grille est pleine, fin de la partie ");
+               
+               fin = true;
+           }
+           
+           else if(J1.nombreJetonsRestants==0 && J2.nombreJetonsRestants==0){// Arret partie si le joueur n'a plus de jetons 
+               
+               System.out.println("Les joueurs n'ont plus de jetons. Egalité. ");
+               
+               fin = true;
+           }
+           
+           
+           else{
+               
+               joueurCourant=ProchainJoueur();
+           }
+        }
     }
+            
+           // System.out.println(joueurCourant.nombreDesintegrateurs);
+}}
 }
     
     
