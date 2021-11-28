@@ -49,6 +49,7 @@ public class Partie {
         
         grilleJeu = new Grille() ; // création grille 
         
+        grilleJeu.viderGrille();
         
         System.out.println("Début de la partie de puissance 4 !");
         
