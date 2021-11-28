@@ -212,6 +212,7 @@ public class fenetreDejeu extends javax.swing.JFrame {
         panneau_infos_joueurs.setVisible(true);
         panneau_info_partie.setVisible(true);
         initialiserPartie ();
+        panneau_grille.repaint();
         
     }//GEN-LAST:event_btn_startActionPerformed
 
@@ -261,6 +262,7 @@ public class fenetreDejeu extends javax.swing.JFrame {
     
         grilleJeu = new Grille() ; // création grille 
         
+        grilleJeu.viderGrille();
         
         System.out.println("Début de la partie de puissance 4 !");
         
@@ -303,6 +305,7 @@ public class fenetreDejeu extends javax.swing.JFrame {
         
         // placement des trous noirs aleatoire
         
+       
         int colAl;
         int lignAl;
         int compteur=0;
@@ -317,7 +320,7 @@ public class fenetreDejeu extends javax.swing.JFrame {
         
         grilleJeu.placerTrouNoir(lignAl, colAl);
         
-        if(grilleJeu.CellulesJeu[lignAl][colAl].trouNoir==true){
+        if(grilleJeu.placerTrouNoir(lignAl, colAl)==true){
             
             compteur++;
         } 
