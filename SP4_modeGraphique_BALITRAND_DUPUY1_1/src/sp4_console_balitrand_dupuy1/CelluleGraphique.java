@@ -48,7 +48,7 @@ public void paintComponent (Graphics G){
         
     }
     
-    setIcon (img_vide); // on attribue l'image celluleVide.png
+   // setIcon (img_vide); // on attribue l'image celluleVide.png
 }
 
         
