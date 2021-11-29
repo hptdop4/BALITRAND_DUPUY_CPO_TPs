@@ -274,7 +274,7 @@ public boolean colonneRemplie(int colonne){
 
 public boolean placerTrouNoir (int ligne ,int colonne){ // VERSION 2 
                  
-    if (CellulesJeu [ligne][colonne].trouNoir == false){
+    if (CellulesJeu [ligne][colonne].presenceTrouNoir() == false){
        
         CellulesJeu [ligne][colonne].placerTrouNoir();
         return true; 

@@ -38,7 +38,7 @@ public void paintComponent (Graphics G){
        
        switch(couleur_jeton){
           
-           case "Vide" -> setIcon (img_trouNoir);
+           case "Vide" -> setIcon (img_vide);
            case "Rouge" -> setIcon (img_jetonRouge);
            case "Jaune" -> setIcon (img_jetonJaune);
                     

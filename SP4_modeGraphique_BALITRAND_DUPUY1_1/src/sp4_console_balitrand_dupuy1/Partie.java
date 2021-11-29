@@ -135,20 +135,6 @@ public class Partie {
         
         initialiserPartie ();
         
-        
-        //On a decide que le joueur rouge commence (aléatoire)
-        
-        if (J1.Couleur=="Rouge"){
-            
-            joueurCourant=J1;
-        }
-        
-        else if (J2.Couleur=="Rouge"){
-            
-            joueurCourant=J2;
-        }
-        
-        
         boolean fin=false;
                 
         grilleJeu.afficherGrilleSurConsole();
