@@ -46,7 +46,6 @@ public class fenetreDejeu extends javax.swing.JFrame {
     private void initComponents() {
 
         panneau_grille = new javax.swing.JPanel();
-        jToolBar1 = new javax.swing.JToolBar();
         panneau_infos_joueurs = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -83,10 +82,6 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
         panneau_grille.setBackground(new java.awt.Color(204, 255, 255));
         panneau_grille.setLayout(new java.awt.GridLayout(6, 7));
-
-        jToolBar1.setRollover(true);
-        panneau_grille.add(jToolBar1);
-
         getContentPane().add(panneau_grille, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 672, 576));
 
         panneau_infos_joueurs.setBackground(new java.awt.Color(51, 255, 102));
@@ -558,7 +553,6 @@ public class fenetreDejeu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lbl_j1_couleur;
     private javax.swing.JLabel lbl_j1_nom;
     private javax.swing.JLabel lbl_j2_couleur;
