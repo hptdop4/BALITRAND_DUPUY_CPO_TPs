@@ -62,17 +62,17 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
                         if (vict_j1 && !vict_j2) {
 
-                            textemessage.setText("Victoire de : " + ListeJoueur[0].Nom);
+                            textemessage.setText("Victoire de : " + ListeJoueur[1].Nom);
 
                         } else if (vict_j2 && !vict_j1) {
 
-                            textemessage.setText("Victoire de" + ListeJoueur[1].Nom);
+                            textemessage.setText("Victoire de " + ListeJoueur[0].Nom);
                         } else if (vict_j1 && vict_j2) {
 
                             if (joueurCourant == ListeJoueur[0]) {
-                                textemessage.setText("Victoire de " + ListeJoueur[1].Nom + " Faute de jeu de " + ListeJoueur[0].Nom);
-                            } else {
                                 textemessage.setText("Victoire de " + ListeJoueur[0].Nom + " Faute de jeu de " + ListeJoueur[1].Nom);
+                            } else {
+                                textemessage.setText("Victoire de " + ListeJoueur[1].Nom + " Faute de jeu de " + ListeJoueur[0].Nom);
                             }
                         }
 
@@ -455,13 +455,13 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
         attribuerCouleursAuxJoueurs();
 
-        System.out.println(joueur1.Nom + " est de couleur " + joueur1.Couleur);
-        System.out.println(joueur2.Nom + " est de couleur " + joueur2.Couleur);
+        System.out.println(joueur1.Nom + " est de couleur " + joueur2.Couleur);
+        System.out.println(joueur2.Nom + " est de couleur " + joueur1.Couleur);
 
         lbl_j1_nom.setText(nom1);
         lbl_j2_nom.setText(nom2);
-        lbl_j1_couleur.setText(joueur1.Couleur);
-        lbl_j2_couleur.setText(joueur2.Couleur);
+        lbl_j1_couleur.setText(joueur2.Couleur);
+        lbl_j2_couleur.setText(joueur1.Couleur);
 
 // attribution des jetons aux joueurs
         for (int t = 0; t <= 20; t++) {
