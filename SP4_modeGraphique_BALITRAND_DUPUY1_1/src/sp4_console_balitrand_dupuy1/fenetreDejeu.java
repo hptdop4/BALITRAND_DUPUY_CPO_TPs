@@ -290,65 +290,72 @@ public class fenetreDejeu extends javax.swing.JFrame {
 
     private void btn_col_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_0ActionPerformed
 
-        joueurSuivant();
+        //joueurSuivant();
         if (grilleJeu.colonneRemplie(0) == true) {
             btn_col_0.setEnabled(false);
         }
         jouerDansColonne(0);
+        joueurSuivant();
 
     }//GEN-LAST:event_btn_col_0ActionPerformed
 
     private void btn_col_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_1ActionPerformed
-        joueurSuivant();
+        //joueurSuivant();
 
         if (grilleJeu.colonneRemplie(1) == true) {
             btn_col_1.setEnabled(false);
         }
 
         jouerDansColonne(1);
+        joueurSuivant();
     }//GEN-LAST:event_btn_col_1ActionPerformed
 
     private void btn_col_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_2ActionPerformed
-        joueurSuivant();
+        //joueurSuivant();
 
         if (grilleJeu.colonneRemplie(2) == true) {
             btn_col_2.setEnabled(false);
         }
         jouerDansColonne(2);
+        joueurSuivant();
     }//GEN-LAST:event_btn_col_2ActionPerformed
 
     private void btn_col_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_3ActionPerformed
-        joueurSuivant();
+        //joueurSuivant();
 
         if (grilleJeu.colonneRemplie(3) == true) {
             btn_col_3.setEnabled(false);
         }
 
         jouerDansColonne(3);
+        joueurSuivant();
     }//GEN-LAST:event_btn_col_3ActionPerformed
 
     private void btn_col_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_4ActionPerformed
-        joueurSuivant();
+       // joueurSuivant();
         if (grilleJeu.colonneRemplie(4) == true) {
             btn_col_4.setEnabled(false);
         }
         jouerDansColonne(4);
+        joueurSuivant();
     }//GEN-LAST:event_btn_col_4ActionPerformed
 
     private void btn_col_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_5ActionPerformed
-        joueurSuivant();
+        //joueurSuivant();
         if (grilleJeu.colonneRemplie(5) == true) {
             btn_col_5.setEnabled(false);
         }
         jouerDansColonne(5);
+        joueurSuivant();
     }//GEN-LAST:event_btn_col_5ActionPerformed
 
     private void btn_col_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_6ActionPerformed
-        joueurSuivant();
+        //joueurSuivant();
         if (grilleJeu.colonneRemplie(6) == true) {
             btn_col_6.setEnabled(false);
         }
         jouerDansColonne(6);
+        joueurSuivant();
     }//GEN-LAST:event_btn_col_6ActionPerformed
 
     public boolean jouerDansColonne(int indice_colonne) {
@@ -487,6 +494,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
             joueurCourant = joueur2;
         }
 
+        
+        
         lbl_jcourant.setText(joueurCourant.Nom);
 
         // placement des trous noirs aleatoire
