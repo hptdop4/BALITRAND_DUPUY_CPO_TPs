@@ -53,10 +53,8 @@ public class fenetreDejeu extends javax.swing.JFrame {
                             textemessage.setText("Erreur ce n'est pas votre jeton");
                         }
 
-                        
-                                grilleJeu.tasserGrille2();
+                        grilleJeu.tasserGrille2();
 
-                         
                         panneau_grille.repaint();
 
                         boolean vict_j1 = grilleJeu.etreGagnanteDuJeton(ListeJoueur[0]);
