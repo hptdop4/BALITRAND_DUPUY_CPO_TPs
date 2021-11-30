@@ -252,6 +252,29 @@ public void tasserGrille (int ligne, int colonne){
     }
   
  
+public void tasserGrille2(){
+    for(int k=0 ; k <=6 ; k ++){
+        
+   
+    for(int i=5 ; i>=0 ; i--){
+        
+        if(i==0){
+            CellulesJeu[i][k].jetonCourant = null;
+            
+        }
+        else if (CellulesJeu[i][k].jetonCourant == null){
+            
+            CellulesJeu[i][k].jetonCourant = CellulesJeu[i-1][k].jetonCourant;
+            CellulesJeu[i-1][k].jetonCourant = null;
+        }
+    }
+    
+    }
+}
+
+
+
+
 public void recupererJeton(int ligne,  int colonne){
     
     CellulesJeu[ligne][colonne].recupererJeton();
