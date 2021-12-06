@@ -11,7 +11,7 @@ public class Cellule {
     String Etat;
     
     public Cellule() {
-        Etat="eteind";
+        Etat="eteint";
     }
     
 }
