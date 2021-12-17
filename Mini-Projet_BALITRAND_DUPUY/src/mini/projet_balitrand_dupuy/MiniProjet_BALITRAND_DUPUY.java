@@ -4,7 +4,7 @@
  */
 package mini.projet_balitrand_dupuy;
 
-import Joueur;
+
 import java.util.Scanner;
 
 /**
@@ -30,7 +30,7 @@ public class MiniProjet_BALITRAND_DUPUY {
         Partie partieJeu = new Partie(J1);
         
         
-        
+        partieJeu.TourPartie();
     }
     
 }

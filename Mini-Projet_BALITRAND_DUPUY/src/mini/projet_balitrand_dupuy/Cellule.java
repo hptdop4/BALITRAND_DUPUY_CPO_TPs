@@ -1,3 +1,5 @@
+package mini.projet_balitrand_dupuy;
+
 /*
  * Mini Projet Lights out
  * Dupuy et Balitrand

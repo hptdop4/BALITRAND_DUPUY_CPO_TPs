@@ -1,3 +1,5 @@
+package mini.projet_balitrand_dupuy;
+
 /*
  * Mini Projet Lights out
  * Dupuy et Balitrand
@@ -45,21 +47,22 @@ public class Grille {
                     System.out.print("\n");
                 }
                 else if (i==-1 && j==-1){
-                    System.out.print(" ");
+                    System.out.print("   ");
                 }
                 
                 else if (i==-1){
-                    System.out.print(j);
+                    System.out.print(j+" ");
                 }
                 else if (j==-1){
-                    System.out.print(i);
+                    System.out.print(i+"  ");
                 }
                 
                 else if ("allume".equals(LireEtat(i, j))) {
-                    System.out.print("\u001B[33m" + "O");
+                    System.out.print("\u001B[33m" + "O ");
+                    System.out.print("\u001B[0m");
 
                 } else if ("eteint".equals(LireEtat(i, j))) {
-                    System.out.print("\u001B[30m" + "O");
+                    System.out.print("\u001B[30m" + "O ");
 
                 }
             }
