@@ -45,7 +45,11 @@ public class Partie {
         
         grille.Affichage();
         
-        while(grille.TerminerJeu()==false){
+        boolean fin = grille.TerminerJeu();
+        
+        while(fin==false){
+            
+            System.out.println(J1.Nom + " vous avez joué " + J1.nbreClic);
             
             System.out.println(J1.Nom + " : Choisissez les coordonnées de votre prochaine action.");
             System.out.println("Saisissez la ligne:");
@@ -67,8 +71,24 @@ public class Partie {
                 
             }
             
+            grille.ChangerEtat(ligne, colonne);
+            if (ligne +1 != 5){
+               grille.ChangerEtat(ligne +1, colonne); 
+            }
+            if (ligne -1 != -1){
+               grille.ChangerEtat(ligne -1, colonne); 
+            }
+            if (colonne +1 != 5){
+               grille.ChangerEtat(ligne , colonne +1); 
+            }
+            if (colonne -1 != -1){
+               grille.ChangerEtat(ligne , colonne -1); 
+            }
             
             
+            J1.nbreClic++;
+            
+            fin = grille.TerminerJeu();
             
             
             grille.Affichage();

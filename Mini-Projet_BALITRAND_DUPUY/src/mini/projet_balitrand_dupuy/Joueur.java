@@ -16,6 +16,7 @@ public class Joueur {
     
     public Joueur(String unNom) {
         Nom = unNom;
+        nbreClic=0;   
     }
     
     
