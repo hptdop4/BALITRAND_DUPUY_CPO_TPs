@@ -23,18 +23,63 @@ public class Partie {
         J1 = joueur1;
 }
     
-    public void initialiserPartie() {
-
-        grille = new Grille();
+    public void ChoixNiveau(int level){
         
+        //level avec une seule lumiere allumée située au hasard
         
-        // allumage aleatoire d'une case 
+        if (level==1){
         Random rand = new Random();
         int lignAl = rand.nextInt(5);
 
         int colAl = rand.nextInt(5);
     
         grille.ChangerEtat(lignAl, colAl);
+        }
+        
+        //level test victoire évidente
+        else if (level==2){
+        
+        grille.ChangerEtat(2, 2);
+        grille.ChangerEtat(3, 2);
+        grille.ChangerEtat(1, 2);
+        grille.ChangerEtat(2, 3);
+        grille.ChangerEtat(2, 1);
+        
+        }
+        
+        
+        //gegner (4.0 3.3 1.1)
+        else if (level==2){
+        grille.ChangerEtat(0, 1);
+        grille.ChangerEtat(1, 0);
+        grille.ChangerEtat(1, 1);
+        grille.ChangerEtat(1, 2);
+        grille.ChangerEtat(2, 1);
+        grille.ChangerEtat(2, 3);
+        grille.ChangerEtat(3, 0);
+        grille.ChangerEtat(3, 2);
+        grille.ChangerEtat(3, 3);
+        grille.ChangerEtat(3, 4);
+        grille.ChangerEtat(4, 0);
+        grille.ChangerEtat(4, 1);
+        grille.ChangerEtat(4, 3);
+        }
+    }
+    
+    
+    
+    
+    
+    public void initialiserPartie() {
+
+        grille = new Grille();
+        
+        System.out.println(J1.Nom + ": nous vous proposons de sélectionner un niveau.");
+        Scanner sc = new Scanner(System.in);
+        int level = sc.nextInt(); 
+        
+        ChoixNiveau(level);
+       
         
     }
     
@@ -49,7 +94,7 @@ public class Partie {
         
         while(fin==false){
             
-            System.out.println(J1.Nom + " vous avez joué " + J1.nbreClic);
+            System.out.println(J1.Nom + " vous avez joué " + J1.nbreClic + " fois.");
             
             System.out.println(J1.Nom + " : Choisissez les coordonnées de votre prochaine action.");
             System.out.println("Saisissez la ligne:");
@@ -94,6 +139,7 @@ public class Partie {
             grille.Affichage();
         }
         
+        System.out.println("Félicitation " + J1.Nom + " vous avez réussi en " + J1.nbreClic + " coups");
     
     }
 }
