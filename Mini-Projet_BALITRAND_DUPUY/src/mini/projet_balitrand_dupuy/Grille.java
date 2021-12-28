@@ -4,7 +4,6 @@ package mini.projet_balitrand_dupuy;
  * Mini Projet Lights out
  * Dupuy et Balitrand
  */
-
 /**
  *
  * @author Flavie BALITRAND
@@ -45,19 +44,13 @@ public class Grille {
             for (int j = -1; j < 6; j++) {
                 if (j == 5) {
                     System.out.print("\n");
-                }
-                else if (i==-1 && j==-1){
+                } else if (i == -1 && j == -1) {
                     System.out.print("   ");
-                }
-                
-                else if (i==-1){
-                    System.out.print(j+" ");
-                }
-                else if (j==-1){
-                    System.out.print(i+"  ");
-                }
-                
-                else if ("allume".equals(LireEtat(i, j))) {
+                } else if (i == -1) {
+                    System.out.print(j + " ");
+                } else if (j == -1) {
+                    System.out.print(i + "  ");
+                } else if ("allume".equals(LireEtat(i, j))) {
                     System.out.print("\u001B[33m" + "O ");
                     System.out.print("\u001B[0m");
 
@@ -67,6 +60,24 @@ public class Grille {
                 }
             }
 
+        }
+    }
+
+    public void JouerCase(int ligne, int colonne) {
+
+        ChangerEtat(ligne, colonne);
+
+        if (ligne + 1 != 5) {
+            ChangerEtat(ligne + 1, colonne);
+        }
+        if (ligne - 1 != -1) {
+            ChangerEtat(ligne - 1, colonne);
+        }
+        if (colonne + 1 != 5) {
+            ChangerEtat(ligne, colonne + 1);
+        }
+        if (colonne - 1 != -1) {
+            ChangerEtat(ligne, colonne - 1);
         }
     }
 
