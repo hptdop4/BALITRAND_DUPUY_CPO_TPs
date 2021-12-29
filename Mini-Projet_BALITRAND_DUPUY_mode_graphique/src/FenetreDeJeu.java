@@ -1,3 +1,7 @@
+
+import mini.projet_balitrand_dupuy.Grille;
+import mini.projet_balitrand_dupuy.Joueur;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,11 +13,26 @@
  */
 public class FenetreDeJeu extends javax.swing.JFrame {
 
+    Joueur J1;
+    Grille grille= new Grille ();
+    int level;
+    int[][] TabReponse = new int[2][5]; 
+    
+    
     /**
      * Creates new form FenetreDeJeu
      */
     public FenetreDeJeu() {
         initComponents();
+        panneau_creation_partie.setVisible(false);
+        panneau_infos_joueurs.setVisible(false);
+        panneau_infos_partie.setVisible(false);
+        
+      
+            
+         
+            
+        
     }
 
     /**
@@ -29,7 +48,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneau_creation_partie = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         nom_joueur = new javax.swing.JTextField();
-        btn_start = new javax.swing.JButton();
+        btn_start2 = new javax.swing.JButton();
         panneau_infos_joueurs = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -43,6 +62,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneau_contexte = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btn_start1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -64,8 +84,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         });
         panneau_creation_partie.add(nom_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 90, -1));
 
-        btn_start.setText("Lancer l'aventure !");
-        panneau_creation_partie.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
+        btn_start2.setText("Lancer l'aventure !");
+        btn_start2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_start2ActionPerformed(evt);
+            }
+        });
+        panneau_creation_partie.add(btn_start2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
 
         getContentPane().add(panneau_creation_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, 300, 120));
 
@@ -107,10 +132,19 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneau_contexte.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Sinon vous serez prisonniers à jamais. A vous de jouer et que la chance soit avec vous !");
-        panneau_contexte.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 580, 30));
+        panneau_contexte.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 480, 30));
 
         jLabel3.setText("Vous vous êtes perdus dans la Forêt Interdite, pour retrouver votre chemin vous devez capturer toutes les lucioles.");
         panneau_contexte.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 630, 30));
+
+        btn_start1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btn_start1.setText("GO !");
+        btn_start1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_start1ActionPerformed(evt);
+            }
+        });
+        panneau_contexte.add(btn_start1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, -1, -1));
 
         getContentPane().add(panneau_contexte, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 650, 100));
 
@@ -120,6 +154,15 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private void nom_joueurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nom_joueurActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nom_joueurActionPerformed
+
+    private void btn_start1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_start1ActionPerformed
+        panneau_creation_partie.setVisible(true);
+    }//GEN-LAST:event_btn_start1ActionPerformed
+
+    private void btn_start2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_start2ActionPerformed
+       panneau_infos_joueurs.setVisible(true);
+       panneau_infos_partie.setVisible(true);
+    }//GEN-LAST:event_btn_start2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,7 +200,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_start;
+    private javax.swing.JButton btn_start1;
+    private javax.swing.JButton btn_start2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
