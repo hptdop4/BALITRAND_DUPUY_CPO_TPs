@@ -15,8 +15,6 @@ public class Partie {
 
     Joueur J1;
     Grille grille;
-    int[] Tab_lign = new int[5];
-    int[] Tab_colo = new int[5];
     
 
     public Partie(Joueur joueur1) {
@@ -24,65 +22,7 @@ public class Partie {
         J1 = joueur1;
     }
 
-    public void ChoixNiveau(int level) {
-
-        Random rand = new Random();
-
-        //level avec une seule lumiere allumée située au hasard
-        switch (level) {
-            case 1 -> {
-                int lignAl = rand.nextInt(5);
-                int colAl = rand.nextInt(5);
-                grille.ChangerEtat(lignAl, colAl);
-            }
-            case 2 -> {
-                grille.ChangerEtat(2, 2);
-                grille.ChangerEtat(3, 2);
-                grille.ChangerEtat(1, 2);
-                grille.ChangerEtat(2, 3);
-                grille.ChangerEtat(2, 1);
-            }
-
-            case 3 -> {
-                for (int i = 0; i < 3; i++) {
-
-                    
-
-                    int ligne = rand.nextInt(5);
-                    Tab_lign[i] = ligne;
-                    int colo = rand.nextInt(5);
-                    Tab_colo[i] = colo;
-
-                    System.out.println(ligne + " " + colo);
-
-                    grille.JouerCase(ligne, colo);
-
-                }
-
-            }
-            
-            
-            case 4 -> {
-                for (int i = 0; i < 4; i++) {
-
-                    
-
-                    int ligne = rand.nextInt(5);
-                    Tab_lign[i] = ligne;
-                    int colo = rand.nextInt(5);
-                    Tab_colo[i] = colo;
-
-                    System.out.println(ligne + " " + colo);
-
-                    grille.JouerCase(ligne, colo);
-
-                }
-
-            }
-            default -> {
-            }
-        }
-    }
+    
 
     public void initialiserPartie() {
 
@@ -92,7 +32,7 @@ public class Partie {
         Scanner sc = new Scanner(System.in);
         int level = sc.nextInt();
 
-        ChoixNiveau(level);
+        grille.ChoixNiveau(level);
 
     }
 
@@ -147,12 +87,25 @@ public class Partie {
                     System.out.println("Perdu la limite de jeu est dépassée voulez vous voir la réponse ?   Tapez  N ou O");
                     reponse = sc.nextLine();
                 }
+                
+                
+                
+                
                 if ("N".equals(reponse)){
                     break;
                 }
+                
+                
+                
                 else if ("O".equals(reponse)){
                     
+                    
+                    
                 }
+                
+                
+                
+                
              break;   
             }
         }
