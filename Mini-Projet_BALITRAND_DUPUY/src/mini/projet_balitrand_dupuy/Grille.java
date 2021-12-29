@@ -40,83 +40,74 @@ public class Grille {
         }
     }
 
-    public int [][] ChoixNiveau(int level) {
+    public int[][] ChoixNiveau(int level) {
 
         Random rand = new Random();
-        
+
         int[][] tableau = new int[2][5];
 
         //level avec une seule lumiere allumée située au hasard
-        
-            //level un seul éclairage aleatoire(très difficile)
-            
-            //level test solution en un coup (très facile)
-            if(level==2){
+        //level un seul éclairage aleatoire(très difficile)
+        //level test solution en un coup (très facile)
+        if (level == 2) {
+            int ligne = rand.nextInt(5);
+            int colo = rand.nextInt(5);
+            tableau[0][0] = ligne;
+            tableau[1][0] = colo;
+            System.out.println(ligne + " " + colo);
+
+            JouerCase(ligne, colo);
+            return tableau;
+        } //3 actions générées aléatoirement (facile)
+        else if (level == 3) {
+            for (int i = 0; i < 3; i++) {
+
                 int ligne = rand.nextInt(5);
+                tableau[0][i] = ligne;
                 int colo = rand.nextInt(5);
-                tableau[0][0] = ligne;
-                tableau[1][0] = colo;
+                tableau[1][i] = colo;
+
                 System.out.println(ligne + " " + colo);
 
                 JouerCase(ligne, colo);
-                return tableau;
-            }
 
-            //3 actions générées aléatoirement (facile)
-            else if (level==3){
-                for (int i = 0; i < 3; i++) {
-
-                    int ligne = rand.nextInt(5);
-                    tableau[0][i] = ligne;
-                    int colo = rand.nextInt(5);
-                    tableau[1][i] = colo;
-
-                    System.out.println(ligne + " " + colo);
-
-                    JouerCase(ligne, colo);
-
-                }
-                return tableau;
-
-            }
-
-            //4 actions générées aléatoirement (moyen)
-           else if (level==4){
-                for (int i = 0; i < 4; i++) {
-
-                    int ligne = rand.nextInt(5);
-                    tableau[0][i] = ligne;
-                    int colo = rand.nextInt(5);
-                    tableau[1][i] = colo;
-
-                    System.out.println(ligne + " " + colo);
-
-                    JouerCase(ligne, colo);
-
-                }
-                    return tableau;
-            }
-
-            //5 actions générées aléatoirement (difficile)
-            else if (level==5){
-                for (int i = 0; i < 5; i++) {
-
-                    int ligne = rand.nextInt(5);
-                    tableau[0][i] = ligne;
-                    int colo = rand.nextInt(5);
-                    tableau[1][i] = colo;
-
-                    System.out.println(ligne + " " + colo);
-
-                    JouerCase(ligne, colo);
-
-                }
-                return tableau;
             }
             return tableau;
 
+        } //4 actions générées aléatoirement (moyen)
+        else if (level == 4) {
+            for (int i = 0; i < 4; i++) {
+
+                int ligne = rand.nextInt(5);
+                tableau[0][i] = ligne;
+                int colo = rand.nextInt(5);
+                tableau[1][i] = colo;
+
+                System.out.println(ligne + " " + colo);
+
+                JouerCase(ligne, colo);
+
+            }
+            return tableau;
+        } //5 actions générées aléatoirement (difficile)
+        else if (level == 5) {
+            for (int i = 0; i < 5; i++) {
+
+                int ligne = rand.nextInt(5);
+                tableau[0][i] = ligne;
+                int colo = rand.nextInt(5);
+                tableau[1][i] = colo;
+
+                System.out.println(ligne + " " + colo);
+
+                JouerCase(ligne, colo);
+
+            }
+            return tableau;
         }
-    
+        return tableau;
+
+    }
 
     public void Affichage() {
 
@@ -175,4 +166,22 @@ public class Grille {
         return fini;
 
     }
+
+    public void Reset(int level, int[][] Tab) {
+        
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                
+                CelluleActuelle[i][j].Etat = "eteint";
+            }
+        }
+        
+        for (int i = 0; i < level-1; i++) {
+
+            JouerCase(Tab[0][i], Tab[1][i]);
+
+        }
+
+    }
+
 }
