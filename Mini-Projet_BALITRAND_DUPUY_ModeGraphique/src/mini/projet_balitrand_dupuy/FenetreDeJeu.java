@@ -28,9 +28,18 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 CelluleGraphique CellGraph = new CelluleGraphique(grille.CelluleActuelle[i][j]);
-                panneau_grille.add(CellGraph);
-            }
-        }
+                
+                
+                 CellGraph.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        Cellule c = CellGraph.celluleAssociee;
+                        grille.ChangerEtat(WIDTH, ALLBITS);
+                        
+                    }
+                 });
+                         panneau_grille.add(CellGraph);
+            
+        }}
     }
 
     /**
@@ -196,18 +205,18 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         
         //System.out.println(J1.Nom+" "+J1.nbreClic);
         lbl_nbclics.setText(J1.nbreClic+"");
-        /*
+        
         //choix niveau entre 2 3 4 5
-        level = sc.nextInt();
+        level = 2;
         while (level != 2 && level != 3 && level != 4 && level != 5) {
             System.out.println(J1.Nom + " : vous faites erreur, recommencez.");
 
             System.out.println("Saisissez un niveau entre 2  3  4  et  5 :");
-            level = sc.nextInt();
+            //level = sc.nextInt();
         }
 
         TabReponse = grille.ChoixNiveau(level);
-*/
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
