@@ -10,11 +10,25 @@ package mini.projet_balitrand_dupuy;
  */
 public class FenetreDeJeu extends javax.swing.JFrame {
 
+    Joueur J1;
+    Grille grille = new Grille();
+    int level;
+    int[][] TabReponse = new int[2][5];
+
     /**
      * Creates new form FenetreDeJeu
      */
     public FenetreDeJeu() {
         initComponents();
+        panneau_creation_partie.setVisible(false);
+        panneau_infos_jeu.setVisible(false);
+        panneau_infos_joueur.setVisible(false);
+        for (int i = 0; i <5 ; i++) {
+            for (int j = 0; j < 5; j++) {
+                CelluleGraphique CellGraph = new CelluleGraphique(grille.CelluleActuelle[i][j]);
+                panneau_grille.add(CellGraph);
+            }
+        }
     }
 
     /**
@@ -62,6 +76,11 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
         btn_start1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btn_start1.setText("GO !!!");
+        btn_start1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_start1ActionPerformed(evt);
+            }
+        });
         panneau_contexte.add(btn_start1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, -1, -1));
 
         getContentPane().add(panneau_contexte, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 650, 100));
@@ -74,6 +93,11 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneau_creation_partie.add(nom_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 150, -1));
 
         btn_start2.setText("Lancer l'aventure !");
+        btn_start2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_start2ActionPerformed(evt);
+            }
+        });
         panneau_creation_partie.add(btn_start2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         getContentPane().add(panneau_creation_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 330, 120));
@@ -110,6 +134,15 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
         setBounds(0, 0, 1044, 678);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_start1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_start1ActionPerformed
+        panneau_creation_partie.setVisible(true);
+    }//GEN-LAST:event_btn_start1ActionPerformed
+
+    private void btn_start2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_start2ActionPerformed
+        panneau_infos_jeu.setVisible(true);
+        panneau_infos_joueur.setVisible(true);
+    }//GEN-LAST:event_btn_start2ActionPerformed
 
     /**
      * @param args the command line arguments

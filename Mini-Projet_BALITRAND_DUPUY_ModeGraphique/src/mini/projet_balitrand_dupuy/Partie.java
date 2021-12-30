@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Partie {
 
     Joueur J1;
-    Grille grille;
+    Grille grille = new Grille ();
     int level;
     int[][] TabReponse = new int[2][5];
 
@@ -24,7 +24,7 @@ public class Partie {
 
     public void initialiserPartie() {
 
-        grille = new Grille();
+        //grille = new Grille();
 
         System.out.println(J1.Nom + ": nous vous proposons de sélectionner un niveau entre 2  3  4  et  5 :");
         Scanner sc = new Scanner(System.in);
