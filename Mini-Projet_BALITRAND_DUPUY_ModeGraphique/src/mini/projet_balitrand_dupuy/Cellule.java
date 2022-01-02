@@ -16,4 +16,16 @@ public class Cellule {
         Etat="eteint";
     }
     
+    
+    public void ChangerEtat2() {
+
+        
+
+        if (Etat=="eteint") {
+            Etat = "allume";
+        } else if (Etat == "allume") {
+            Etat = "eteint";
+        }
+    }
+    
 }
