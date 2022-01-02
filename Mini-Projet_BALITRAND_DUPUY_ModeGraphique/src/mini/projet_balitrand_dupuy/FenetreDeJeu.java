@@ -4,11 +4,13 @@
  */
 package mini.projet_balitrand_dupuy;
 
+import java.awt.event.ActionListener;
 import java.util.Scanner;
 
 /**
  *
  * @author ROXANA
+ * joueur
  */
 public class FenetreDeJeu extends javax.swing.JFrame {
 
@@ -28,23 +30,31 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 CelluleGraphique CellGraph = new CelluleGraphique(grille.CelluleActuelle[i][j]);
-                 panneau_grille.add(CellGraph);
-                
-                 CellGraph.addActionListener((java.awt.event.ActionEvent evt) -> {
-                     Cellule c = CellGraph.celluleAssociee;
-                     //c.ChangerEtat2();
-                     grille.JouerCase(i, j);
-                     panneau_grille.repaint();
-                     lbl_nbclics.setText("UUUERTJCJ");
+                panneau_grille.add(CellGraph);
+
+                CellGraph.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        //Cellule c = CellGraph.celluleAssociee;
+                        panneau_grille.repaint();
+
+                        grille.JouerCase(i,j);
+                        panneau_grille.repaint();
+                      
+                        boolean test = grille.TerminerJeu();
+                        
+
+                        if (test == true) {
+                            //panneau_grille.repaint();
+                            System.out.print(grille.TerminerJeu());
+                            message.setText("Bravo vous avez gagné!");
+                        }
+                    }
                 });
-                         
-            
-        }}
-        
-        if (grille.TerminerJeu()==true){
-            message.setText("Bravo vous avez gagné!");
+
+            }
         }
-       
+
     }
 
     /**
@@ -201,16 +211,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     public void initialiserPartie() {
 
         //creation joueur
-        
         String nom = nom_joueur.getText();
 
         Joueur joueur = new Joueur(nom);
 
         //grille = new Grille();
-        
-        
-        lbl_nbclics.setText(joueur.nbreClic+"");
-        
+        lbl_nbclics.setText(joueur.nbreClic + "");
+
         //choix niveau entre 2 3 4 5
         level = 2;
         while (level != 2 && level != 3 && level != 4 && level != 5) {

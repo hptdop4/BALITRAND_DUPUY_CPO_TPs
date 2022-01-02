@@ -13,6 +13,7 @@ import java.util.Random;
 public class Grille {
 
     Cellule CelluleActuelle[][] = new Cellule[5][5];
+   
 
     public Grille() {
 
@@ -137,7 +138,7 @@ public class Grille {
     public void JouerCase(int ligne, int colonne) {
 
         ChangerEtat(ligne, colonne);
-
+       
         if (ligne + 1 != 5) {
             ChangerEtat(ligne + 1, colonne);
         }
