@@ -5,6 +5,7 @@
 package mini.projet_balitrand_dupuy;
 
 import java.awt.event.ActionListener;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -32,6 +33,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 CelluleGraphique CellGraph = new CelluleGraphique(grille.CelluleActuelle[i][j]);
                 panneau_grille.add(CellGraph);
 
+     
+             
+                
                 CellGraph.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +79,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         nom_joueur = new javax.swing.JTextField();
         btn_start2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        ComboBox_level = new javax.swing.JComboBox<>();
         panneau_infos_joueur = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -115,8 +121,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneau_creation_partie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Nom Joueur : ");
-        panneau_creation_partie.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
-        panneau_creation_partie.add(nom_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 150, -1));
+        panneau_creation_partie.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        panneau_creation_partie.add(nom_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 150, -1));
 
         btn_start2.setText("Lancer l'aventure !");
         btn_start2.addActionListener(new java.awt.event.ActionListener() {
@@ -124,9 +130,20 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 btn_start2ActionPerformed(evt);
             }
         });
-        panneau_creation_partie.add(btn_start2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
+        panneau_creation_partie.add(btn_start2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, -1));
 
-        getContentPane().add(panneau_creation_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 330, 120));
+        jLabel7.setText("Choix du niveau : ");
+        panneau_creation_partie.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+
+        ComboBox_level.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Level 2", "Level 3", "Level 4", "Level 5" }));
+        ComboBox_level.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBox_levelActionPerformed(evt);
+            }
+        });
+        panneau_creation_partie.add(ComboBox_level, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 110, -1));
+
+        getContentPane().add(panneau_creation_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, 330, 180));
 
         panneau_infos_joueur.setBackground(new java.awt.Color(129, 181, 136));
         panneau_infos_joueur.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -168,10 +185,18 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private void btn_start2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_start2ActionPerformed
         panneau_infos_jeu.setVisible(true);
         panneau_infos_joueur.setVisible(true);
+        //grille.ChoixNiveau((int) ComboBox_level.getSelectedItem());
         initialiserPartie();
         panneau_grille.repaint();
         btn_start2.setEnabled(false);
     }//GEN-LAST:event_btn_start2ActionPerformed
+
+    private void ComboBox_levelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_levelActionPerformed
+   //if(ComboBox_level.getSelectedItem().equals("Level 2")){
+   //    level = 2;
+   //}
+        
+    }//GEN-LAST:event_ComboBox_levelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,7 +244,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         lbl_nbclics.setText(joueur.nbreClic + "");
 
         //choix niveau entre 2 3 4 5
-        level = 2;
+       level = 2;
         while (level != 2 && level != 3 && level != 4 && level != 5) {
             System.out.println(joueur.Nom + " : vous faites erreur, recommencez.");
 
@@ -232,6 +257,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBox_level;
     private javax.swing.JButton btn_start1;
     private javax.swing.JButton btn_start2;
     private javax.swing.JLabel jLabel1;
@@ -240,6 +266,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_nbclics;
     private javax.swing.JTextArea message;
