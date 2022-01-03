@@ -10,8 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author ROXANA
- * joueur
+ * @author ROXANA joueur
  */
 public class FenetreDeJeu extends javax.swing.JFrame {
 
@@ -33,20 +32,16 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 CelluleGraphique CellGraph = new CelluleGraphique(grille.CelluleActuelle[i][j]);
                 panneau_grille.add(CellGraph);
 
-     
-             
-                
                 CellGraph.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         //Cellule c = CellGraph.celluleAssociee;
                         panneau_grille.repaint();
 
-                        grille.JouerCase(i,j);
+                        grille.JouerCase(i, j);
                         panneau_grille.repaint();
-                      
+
                         boolean test = grille.TerminerJeu();
-                        
 
                         if (test == true) {
                             //panneau_grille.repaint();
@@ -89,6 +84,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         message = new javax.swing.JTextArea();
+        panneau_bouton_partie = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -135,7 +133,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         jLabel7.setText("Choix du niveau : ");
         panneau_creation_partie.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
-        ComboBox_level.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Level 2", "Level 3", "Level 4", "Level 5" }));
+        ComboBox_level.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Level 1", "Level 2", "Level 3", "Level 4", "Level 5" }));
         ComboBox_level.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBox_levelActionPerformed(evt);
@@ -175,6 +173,24 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
         getContentPane().add(panneau_infos_jeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 330, 160));
 
+        panneau_bouton_partie.setBackground(new java.awt.Color(141, 185, 132));
+        panneau_bouton_partie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setText("                          Besoin d'aide ?");
+        panneau_bouton_partie.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 320, -1));
+
+        jButton1.setBackground(new java.awt.Color(212, 191, 160));
+        jButton1.setText("Reset");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        panneau_bouton_partie.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 90, 40));
+
+        getContentPane().add(panneau_bouton_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, 330, 180));
+
         setBounds(0, 0, 1044, 678);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -185,18 +201,31 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private void btn_start2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_start2ActionPerformed
         panneau_infos_jeu.setVisible(true);
         panneau_infos_joueur.setVisible(true);
-        //grille.ChoixNiveau((int) ComboBox_level.getSelectedItem());
         initialiserPartie();
         panneau_grille.repaint();
         btn_start2.setEnabled(false);
+        panneau_creation_partie.setVisible(false);
+        
     }//GEN-LAST:event_btn_start2ActionPerformed
 
     private void ComboBox_levelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_levelActionPerformed
-   //if(ComboBox_level.getSelectedItem().equals("Level 2")){
-   //    level = 2;
-   //}
-        
+        if (ComboBox_level.getSelectedItem().equals("Level 1")) {
+            level = 1;
+        } else if (ComboBox_level.getSelectedItem().equals("Level 2")) {
+            level = 2;
+
+        } else if (ComboBox_level.getSelectedItem().equals("Level 3")) {
+            level = 3;
+        } else if (ComboBox_level.getSelectedItem().equals("Level 4")) {
+            level = 4;
+        } else if (ComboBox_level.getSelectedItem().equals("Level 5")) {
+            level = 5;
+        }
     }//GEN-LAST:event_ComboBox_levelActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,15 +272,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         //grille = new Grille();
         lbl_nbclics.setText(joueur.nbreClic + "");
 
-        //choix niveau entre 2 3 4 5
-       level = 2;
-        while (level != 2 && level != 3 && level != 4 && level != 5) {
-            System.out.println(joueur.Nom + " : vous faites erreur, recommencez.");
-
-            System.out.println("Saisissez un niveau entre 2  3  4  et  5 :");
-            //level = sc.nextInt();
-        }
-
+        //choix niveau entre 1 2 3 4 5
+        //puis initialisation de la grille
         TabReponse = grille.ChoixNiveau(level);
 
     }
@@ -260,6 +282,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboBox_level;
     private javax.swing.JButton btn_start1;
     private javax.swing.JButton btn_start2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -267,10 +290,12 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_nbclics;
     private javax.swing.JTextArea message;
     private javax.swing.JTextField nom_joueur;
+    private javax.swing.JPanel panneau_bouton_partie;
     private javax.swing.JPanel panneau_contexte;
     private javax.swing.JPanel panneau_creation_partie;
     private javax.swing.JPanel panneau_grille;

@@ -50,7 +50,7 @@ public class Grille {
         //level avec une seule lumiere allumée située au hasard
         //level un seul éclairage aleatoire(très difficile)
         //level test solution en un coup (très facile)
-        if (level == 2) {
+        if (level == 1) {
             int ligne = rand.nextInt(5);
             int colo = rand.nextInt(5);
             tableau[0][0] = ligne;
@@ -59,7 +59,27 @@ public class Grille {
 
             JouerCase(ligne, colo);
             return tableau;
-        } //3 actions générées aléatoirement (facile)
+        } 
+        
+        //2 actions générées aléatoirement (très facile)
+        else if (level == 2) {
+            for (int i = 0; i < 2; i++) {
+
+                int ligne = rand.nextInt(5);
+                tableau[0][i] = ligne;
+                int colo = rand.nextInt(5);
+                tableau[1][i] = colo;
+
+                System.out.println(ligne + " " + colo);
+
+                JouerCase(ligne, colo);
+
+            }
+            return tableau;
+
+        }
+
+//3 actions générées aléatoirement (facile)
         else if (level == 3) {
             for (int i = 0; i < 3; i++) {
 
