@@ -18,6 +18,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     Grille grille = new Grille();
     int level;
     int[][] TabReponse = new int[2][5];
+    //int nbreClics =0 ;
 
     /**
      * Creates new form FenetreDeJeu
@@ -38,8 +39,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         //Cellule c = CellGraph.celluleAssociee;
                         panneau_grille.repaint();
-
+                        
                         grille.JouerCase(i, j);
+                        //J1.nbreClic = 5;
+                     
                         panneau_grille.repaint();
 
                         boolean test = grille.TerminerJeu();
@@ -255,7 +258,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         System.out.println("aide");
         panneau_grille.repaint();
         message.setText("Vous allez être guidé dans la résolution du problème.\nS'il vous plait suivez les instructions." );
-        
+        if (ComboBox_level.getSelectedItem().equals("Level 1")) {
+           message.setText("Pour résoudre le niveau on peut cliquer sur la luciole qui est adjacente à plusieurs lucioles.");
+        } else if (ComboBox_level.getSelectedItem().equals("Level 2")) {
+            message.setText("Information la case 0-0 est la case dans le coin en haut à gauche. En deux clics, il est possible de gagner.");
+        } else if (ComboBox_level.getSelectedItem().equals("Level 3")) {
+            message.setText("En 3 clics, il est possible de gagner.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -318,8 +327,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
     }
     
+  
+    
    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBox_level;
     private javax.swing.JButton btn_start1;
