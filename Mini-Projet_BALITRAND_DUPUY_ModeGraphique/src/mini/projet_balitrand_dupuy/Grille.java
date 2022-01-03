@@ -197,7 +197,7 @@ public class Grille {
             }
         }
         
-        for (int i = 0; i < level-1; i++) {
+        for (int i = 0; i < level; i++) {
 
             JouerCase(Tab[0][i], Tab[1][i]);
 
