@@ -4,9 +4,11 @@
  */
 package mini.projet_balitrand_dupuy;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.Timer;
 
 /**
  *
@@ -18,8 +20,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     Grille grille = new Grille();
     int level;
     int[][] TabReponse = new int[2][5];
-    //int nbreClics =0 ;
-
+    
     /**
      * Creates new form FenetreDeJeu
      */
@@ -39,12 +40,14 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         //Cellule c = CellGraph.celluleAssociee;
                         panneau_grille.repaint();
-                        
+                                           
                         grille.JouerCase(i, j);
                         //J1.nbreClic = 5;
-                     
+                    
                         panneau_grille.repaint();
 
+                        
+                   
                         boolean test = grille.TerminerJeu();
 
                         if (test == true) {
@@ -59,6 +62,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         }
 
     }
+    
+                        Timer temps ;
+                        int compteur = 0 ;
+                        int durée = 1000;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,6 +93,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         lbl_nbclics = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         lbl_nom = new javax.swing.JLabel();
+        btn_chrono = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        lbl_tpsrestants = new javax.swing.JLabel();
         panneau_infos_jeu = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -169,7 +179,21 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         lbl_nom.setText("nom");
         panneau_infos_joueur.add(lbl_nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 120, -1));
 
-        getContentPane().add(panneau_infos_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, 330, 110));
+        btn_chrono.setText("Lancer le chrono !");
+        btn_chrono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_chronoActionPerformed(evt);
+            }
+        });
+        panneau_infos_joueur.add(btn_chrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
+
+        jLabel10.setText("Temps : ");
+        panneau_infos_joueur.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+
+        lbl_tpsrestants.setText("00:00");
+        panneau_infos_joueur.add(lbl_tpsrestants, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
+
+        getContentPane().add(panneau_infos_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, 330, 180));
 
         panneau_infos_jeu.setBackground(new java.awt.Color(129, 181, 136));
         panneau_infos_jeu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -184,7 +208,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
         panneau_infos_jeu.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 300, 90));
 
-        getContentPane().add(panneau_infos_jeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, 330, 160));
+        getContentPane().add(panneau_infos_jeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 460, 330, 160));
 
         panneau_bouton_partie.setBackground(new java.awt.Color(129, 181, 136));
         panneau_bouton_partie.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -274,6 +298,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneau_grille.repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btn_chronoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_chronoActionPerformed
+       DebutChrono (40);
+    }//GEN-LAST:event_btn_chronoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -309,15 +337,39 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         });
     }
 
+    public void DebutChrono (int TempsRestants){
+       ActionListener action = new ActionListener (){
+          public void actionPerformed (ActionEvent e) {
+             if (compteur == 0){
+                 temps.stop ();
+                 lbl_tpsrestants.setText("Fin du temps");
+             //} else if (message .equals((message.setText("Bravo vous avez gagné!")))){ Arret du temps si partie gagnée
+             //    temps.stop();
+             }else {
+                 lbl_tpsrestants.setText(compteur + "");
+                 compteur --;
+             }
+          }
+       };
+       
+       temps = new Timer (durée , action);
+       temps.setInitialDelay(0);
+       temps.start();
+       compteur = TempsRestants;
+      //  public actionPerformed ()
+    }
+    
+    
     public void initialiserPartie() {
 
         //creation joueur
         String nom = nom_joueur.getText();
-
+        
         Joueur J1 = new Joueur(nom);
 
         //grille = new Grille();
         lbl_nbclics.setText(J1.nbreClic + "");
+        lbl_tpsrestants.setText(compteur + "");
         lbl_nom.setText(J1.Nom +"");
         
 
@@ -332,11 +384,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBox_level;
+    private javax.swing.JButton btn_chrono;
     private javax.swing.JButton btn_start1;
     private javax.swing.JButton btn_start2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -348,6 +402,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_nbclics;
     private javax.swing.JLabel lbl_nom;
+    private javax.swing.JLabel lbl_tpsrestants;
     private javax.swing.JTextArea message;
     private javax.swing.JTextField nom_joueur;
     private javax.swing.JPanel panneau_bouton_partie;
