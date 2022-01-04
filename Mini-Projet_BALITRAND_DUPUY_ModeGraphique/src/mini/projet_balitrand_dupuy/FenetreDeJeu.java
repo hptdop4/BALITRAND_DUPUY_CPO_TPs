@@ -367,8 +367,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
         Joueur J1 = new Joueur(nom);
 
-        //création des labels sur la partie graphique dans le panneau info joueur(le nombre de clic, le chrono et le nom)
-        lbl_nbclics.setText(J1.nbreClic + "");
+        //création des labels sur la partie graphique dans le panneau info joueur( le chrono et le nom)
+       
         lbl_tpsrestants.setText(compteur + "");
         lbl_nom.setText(J1.Nom + "");
 
