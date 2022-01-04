@@ -47,7 +47,7 @@ public class Partie {
         initialiserPartie();
 
         grille.Affichage();
-
+/*
         System.out.println(level);
         for (int i = 0; i < 5; i++) {
 
@@ -56,7 +56,7 @@ public class Partie {
                 System.out.println(TabReponse[j][i]);
             }
         }
-
+*/
         boolean fin = grille.TerminerJeu();
 
         while (fin == false) {
