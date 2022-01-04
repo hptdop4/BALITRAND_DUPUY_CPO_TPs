@@ -48,11 +48,14 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                         //images (allumée ou éteinte sur la grille)
                         panneau_grille.repaint();
 
-
+                        //On aura un message différent suivant si on a ou non active le chronometre
                         if (grille.TerminerJeu() == true) {
-                            //panneau_grille.repaint();
-                            System.out.print(grille.TerminerJeu());
+                            if(compteur!=0){
                             message.setText("Bravo vous avez gagné en " + (40 - compteur - 1) + " secondes \nLa Forêt interdite ne vous retient plus.\nVous pouvez fuir à présent.");
+                            }
+                            else{
+                              message.setText("Bravo vous avez gagné ! \nLa Forêt interdite ne vous retient plus.\nVous pouvez fuir à présent.");
+                            }
                         }
                     }
                 });

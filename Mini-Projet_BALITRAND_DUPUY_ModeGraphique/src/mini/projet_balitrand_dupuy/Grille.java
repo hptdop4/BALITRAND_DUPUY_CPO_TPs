@@ -60,7 +60,7 @@ public class Grille {
             int colo = rand.nextInt(5);
             tableau[0][0] = ligne;
             tableau[1][0] = colo;
-            System.out.println(ligne + " " + colo);
+            //System.out.println(ligne + " " + colo);
 
             JouerCase(ligne, colo);
             return tableau;
@@ -75,7 +75,7 @@ public class Grille {
                 int colo = rand.nextInt(5);
                 tableau[1][i] = colo;
 
-                System.out.println(ligne + " " + colo);
+                //System.out.println(ligne + " " + colo);
 
                 JouerCase(ligne, colo);
 
@@ -93,7 +93,7 @@ public class Grille {
                 int colo = rand.nextInt(5);
                 tableau[1][i] = colo;
 
-                System.out.println(ligne + " " + colo);
+                //System.out.println(ligne + " " + colo);
 
                 JouerCase(ligne, colo);
 
@@ -109,7 +109,7 @@ public class Grille {
                 int colo = rand.nextInt(5);
                 tableau[1][i] = colo;
 
-                System.out.println(ligne + " " + colo);
+                //System.out.println(ligne + " " + colo);
 
                 JouerCase(ligne, colo);
 
@@ -124,7 +124,7 @@ public class Grille {
                 int colo = rand.nextInt(5);
                 tableau[1][i] = colo;
 
-                System.out.println(ligne + " " + colo);
+                //System.out.println(ligne + " " + colo);
 
                 JouerCase(ligne, colo);
 
