@@ -15,6 +15,7 @@ public class Joueur {
     int nbreClic;
     
     public Joueur(String unNom) {
+        //un joueur est defini par son nom et le nombre de clic qu'il a fait
         Nom = unNom;
         nbreClic=0;   
     }

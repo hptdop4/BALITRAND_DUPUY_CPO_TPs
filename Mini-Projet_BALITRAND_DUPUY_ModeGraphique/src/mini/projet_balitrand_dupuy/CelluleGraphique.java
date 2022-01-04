@@ -14,6 +14,8 @@ import javax.swing.JButton;
  */
 public class CelluleGraphique extends JButton {
     Cellule celluleAssociee ;
+    //a partir d'un montage photo on a cree 2 images representant l'etat allume 
+    //et l'etat eteint
     ImageIcon img_vide = new javax.swing.ImageIcon(getClass().getResource("/Images/image_eteint(1).png"));
     ImageIcon img_pleine = new javax.swing.ImageIcon(getClass().getResource("/Images/image_allume(2).png"));
  public CelluleGraphique (Cellule uneCellule){

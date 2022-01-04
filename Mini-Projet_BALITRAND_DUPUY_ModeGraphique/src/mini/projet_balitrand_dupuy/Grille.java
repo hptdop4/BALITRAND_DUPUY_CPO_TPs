@@ -31,6 +31,7 @@ public class Grille {
     }
 
     public void ChangerEtat(int ligne, int colonne) {
+        //simplement change l'etat de la cellule entre allume et eteinte
 
         String Light = LireEtat(ligne, colonne);
 
@@ -42,6 +43,10 @@ public class Grille {
     }
 
     public int[][] ChoixNiveau(int level) {
+        //on va creer aléatoirement les grilles de niveau 
+        //cette méthode prend en entre un niveau de difficulté
+        //puis cré la grille et renvoie le tableau contenant la facon dont la grille
+        //a ete composée ainsi on peut se servir de ce tableau pour donner la reponse au joueur
 
         Random rand = new Random();
 
@@ -131,6 +136,8 @@ public class Grille {
     }
 
     public void Affichage() {
+        //seulement utile dans la version console du jeu on constate que les cellules
+        //allumees sont des O jaunes et les eteintes des O noirs.
 
         for (int i = -1; i < 5; i++) {
             for (int j = -1; j < 6; j++) {
@@ -154,9 +161,11 @@ public class Grille {
 
         }
     }
+    
 
     public void JouerCase(int ligne, int colonne) {
-
+//permet de changer l etat en simultané de tt les cellules alentour a partir de coordonnees
+//si tant est qu'elles soit contenues dans la grille
         ChangerEtat(ligne, colonne);
        
         if (ligne + 1 != 5) {
@@ -174,6 +183,7 @@ public class Grille {
     }
 
     public boolean TerminerJeu() {
+        //test qui renvoie true si toute les cellules sont eteintes
         boolean fini = true;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -189,6 +199,8 @@ public class Grille {
     }
 
     public void Reset(int level, int[][] Tab) {
+        //en se servant du tableau de reponse compose lors de la creation de la 
+        //grille on remet la ggrille dans le meme etat qu'au depart
         
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {

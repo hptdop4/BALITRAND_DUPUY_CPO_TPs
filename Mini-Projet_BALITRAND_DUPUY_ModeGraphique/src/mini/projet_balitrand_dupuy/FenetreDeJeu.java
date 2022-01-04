@@ -20,7 +20,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     Grille grille = new Grille();
     int level;
     int[][] TabReponse = new int[2][5];
-    
+
     /**
      * Creates new form FenetreDeJeu
      */
@@ -40,20 +40,19 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         //Cellule c = CellGraph.celluleAssociee;
                         panneau_grille.repaint();
-                                           
+
                         grille.JouerCase(i, j);
-                        //J1.nbreClic = 5;
-                    
+                        
+
+                        //repaint met a jour le panneau afin de présenter les bonnes
+                        //images (allumée ou éteinte sur la grille)
                         panneau_grille.repaint();
 
-                        
-                   
-                        boolean test = grille.TerminerJeu();
 
-                        if (test == true) {
+                        if (grille.TerminerJeu() == true) {
                             //panneau_grille.repaint();
                             System.out.print(grille.TerminerJeu());
-                            message.setText("Bravo vous avez gagné!");
+                            message.setText("Bravo vous avez gagné en " + (40 - compteur - 1) + " secondes \nLa Forêt interdite ne vous retient plus.\nVous pouvez fuir à présent.");
                         }
                     }
                 });
@@ -62,10 +61,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         }
 
     }
-    
-                        Timer temps ;
-                        int compteur = 0 ;
-                        int durée = 1000;
+
+    Timer temps;
+    int compteur = 0;
+    int durée = 1000;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,8 +89,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneau_infos_joueur = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lbl_nbclics = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         lbl_nom = new javax.swing.JLabel();
         btn_chrono = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -168,16 +165,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneau_infos_joueur.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabel5.setText("Nom du Joueur :");
-        panneau_infos_joueur.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
-
-        lbl_nbclics.setText("nbclic");
-        panneau_infos_joueur.add(lbl_nbclics, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 120, -1));
-
-        jLabel8.setText("Nombre de clics : ");
-        panneau_infos_joueur.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+        panneau_infos_joueur.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         lbl_nom.setText("nom");
-        panneau_infos_joueur.add(lbl_nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 120, -1));
+        panneau_infos_joueur.add(lbl_nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 120, -1));
 
         btn_chrono.setText("Lancer le chrono !");
         btn_chrono.addActionListener(new java.awt.event.ActionListener() {
@@ -185,13 +176,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 btn_chronoActionPerformed(evt);
             }
         });
-        panneau_infos_joueur.add(btn_chrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
+        panneau_infos_joueur.add(btn_chrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
 
         jLabel10.setText("Temps : ");
-        panneau_infos_joueur.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        panneau_infos_joueur.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         lbl_tpsrestants.setText("00:00");
-        panneau_infos_joueur.add(lbl_tpsrestants, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
+        panneau_infos_joueur.add(lbl_tpsrestants, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
         getContentPane().add(panneau_infos_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, 330, 180));
 
@@ -247,7 +238,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_start1ActionPerformed
 
     private void btn_start2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_start2ActionPerformed
-       
+
         panneau_infos_jeu.setVisible(true);
         panneau_infos_joueur.setVisible(true);
         initialiserPartie();
@@ -255,11 +246,14 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         btn_start2.setEnabled(false);
         panneau_creation_partie.setVisible(false);
         panneau_bouton_partie.setVisible(true);
-       
-        
+
+
     }//GEN-LAST:event_btn_start2ActionPerformed
 
     private void ComboBox_levelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_levelActionPerformed
+        //le menue deroulant permet au joueur de choisir le niveau auquel il veux
+        //se confronter 1 (très facile) jusqu'à 5 (difficile)
+
         if (ComboBox_level.getSelectedItem().equals("Level 1")) {
             level = 1;
         } else if (ComboBox_level.getSelectedItem().equals("Level 2")) {
@@ -272,34 +266,40 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         } else if (ComboBox_level.getSelectedItem().equals("Level 5")) {
             level = 5;
         }
-        System.out.println(level);
+
     }//GEN-LAST:event_ComboBox_levelActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //bouton aide
-        
+        //bouton aide reset la grille puis donne au joueur un moyen de completer
+        //la grille à partir du tableau complete a la construction de la grille
+
         grille.Reset(level, TabReponse);
-        System.out.println("aide");
+        
         panneau_grille.repaint();
-        message.setText("Vous allez être guidé dans la résolution du problème.\nS'il vous plait suivez les instructions." );
+        //message.setText("Vous allez être guidé dans la résolution du problème.\nS'il vous plait suivez les instructions." );
         if (ComboBox_level.getSelectedItem().equals("Level 1")) {
-           message.setText("Pour résoudre le niveau on peut cliquer sur la luciole qui est adjacente à plusieurs lucioles.");
+            message.setText("Vous allez être guidé dans la résolution du problème.\nS'il vous plait suivez les instructions.\nPour résoudre le niveau on peut cliquer sur:\nLigne: " + (TabReponse[0][0] + 1) + " Colonne: " + (TabReponse[1][0] + 1));
         } else if (ComboBox_level.getSelectedItem().equals("Level 2")) {
-            message.setText("Information la case 0-0 est la case dans le coin en haut à gauche. En deux clics, il est possible de gagner.");
+            message.setText("Vous allez être guidé dans la résolution du problème.\nS'il vous plait suivez les instructions.\nPour résoudre le niveau on peut cliquer sur:\nLigne: " + (TabReponse[0][1] + 1) + " Colonne: " + (TabReponse[1][1] + 1) + "\nPuis Ligne: " + (TabReponse[0][0] + 1) + " Colonne: " + (TabReponse[1][0] + 1));
         } else if (ComboBox_level.getSelectedItem().equals("Level 3")) {
-            message.setText("En 3 clics, il est possible de gagner.");
+            message.setText("Vous allez être guidé dans la résolution du problème.\nS'il vous plait suivez les instructions.\nPour résoudre le niveau on peut cliquer sur:\nLigne: " + (TabReponse[0][2] + 1) + " Colonne: " + (TabReponse[1][2] + 1) + "\nPuis Ligne: " + (TabReponse[0][1] + 1) + " Colonne: " + (TabReponse[1][1] + 1) + "\nPuis Ligne: " + (TabReponse[0][0] + 1) + " Colonne: " + (TabReponse[1][0] + 1));
+        } else if (ComboBox_level.getSelectedItem().equals("Level 4")) {
+            message.setText("Vous allez être guidé dans la résolution du problème.\nS'il vous plait suivez les instructions.\nPour résoudre le niveau on peut cliquer sur:\nLigne: " + (TabReponse[0][3] + 1) + " Colonne: " + (TabReponse[1][3] + 1) + "\nPuis Ligne: " + (TabReponse[0][2] + 1) + " Colonne: " + (TabReponse[1][2] + 1) + "\nPuis Ligne: " + (TabReponse[0][1] + 1) + " Colonne: " + (TabReponse[1][1] + 1) + "\nPuis Ligne: " + (TabReponse[0][0] + 1) + " Colonne: " + (TabReponse[1][0] + 1));
+        } else if (ComboBox_level.getSelectedItem().equals("Level 5")) {
+            message.setText("Vous allez être guidé dans la résolution du problème.\nS'il vous plait suivez les instructions.\nPour résoudre le niveau on peut cliquer sur:\nLigne: " + (TabReponse[0][4] + 1) + " Colonne: " + (TabReponse[1][4] + 1) + "\nPuis Ligne: " + (TabReponse[0][3] + 1) + " Colonne: " + (TabReponse[1][3] + 1) + "\nPuis Ligne: " + (TabReponse[0][2] + 1) + " Colonne: " + (TabReponse[1][2] + 1) + "\nPuis Ligne: " + (TabReponse[0][1] + 1) + " Colonne: " + (TabReponse[1][1] + 1) + "\nPuis Ligne: " + (TabReponse[0][0] + 1) + " Colonne: " + (TabReponse[1][0] + 1));
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // bouton reset
+        // bouton reset remet a son etat de depart la grillecela permet au joueur
+        //qui se sent perdu de recommencer au point de depart l'enigme
+
         grille.Reset(level, TabReponse);
-        System.out.println("reset");
         panneau_grille.repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btn_chronoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_chronoActionPerformed
-       DebutChrono (40);
+        DebutChrono(40);
     }//GEN-LAST:event_btn_chronoActionPerformed
 
     /**
@@ -337,51 +337,48 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         });
     }
 
-    public void DebutChrono (int TempsRestants){
-       ActionListener action = new ActionListener (){
-          public void actionPerformed (ActionEvent e) {
-             if (compteur == 0){
-                 temps.stop ();
-                 lbl_tpsrestants.setText("Fin du temps");
-             //} else if (message .equals((message.setText("Bravo vous avez gagné!")))){ Arret du temps si partie gagnée
-             //    temps.stop();
-             }else {
-                 lbl_tpsrestants.setText(compteur + "");
-                 compteur --;
-             }
-          }
-       };
-       
-       temps = new Timer (durée , action);
-       temps.setInitialDelay(0);
-       temps.start();
-       compteur = TempsRestants;
-      //  public actionPerformed ()
+    public void DebutChrono(int TempsRestants) {
+        ActionListener action = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (compteur == 0) {
+                    temps.stop();
+                    lbl_tpsrestants.setText("Fin du temps");
+                } else if (grille.TerminerJeu() == true) {
+//Arret du temps si partie gagnée
+                    temps.stop();
+                } else {
+                    lbl_tpsrestants.setText(compteur + "");
+                    compteur--;
+                }
+            }
+        };
+
+        temps = new Timer(durée, action);
+        temps.setInitialDelay(0);
+        temps.start();
+        compteur = TempsRestants;
+        //  public actionPerformed ()
     }
-    
-    
+
     public void initialiserPartie() {
 
-        //creation joueur
+        //creation joueur avec un nom tapé par le participant
         String nom = nom_joueur.getText();
-        
+
         Joueur J1 = new Joueur(nom);
 
-        //grille = new Grille();
+        //création des labels sur la partie graphique dans le panneau info joueur(le nombre de clic, le chrono et le nom)
         lbl_nbclics.setText(J1.nbreClic + "");
         lbl_tpsrestants.setText(compteur + "");
-        lbl_nom.setText(J1.Nom +"");
-        
+        lbl_nom.setText(J1.Nom + "");
 
         //choix niveau entre 1 2 3 4 5
         //puis initialisation de la grille
         TabReponse = grille.ChoixNiveau(level);
 
     }
-    
-  
-    
-   
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBox_level;
     private javax.swing.JButton btn_chrono;
@@ -397,10 +394,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl_nbclics;
     private javax.swing.JLabel lbl_nom;
     private javax.swing.JLabel lbl_tpsrestants;
     private javax.swing.JTextArea message;
