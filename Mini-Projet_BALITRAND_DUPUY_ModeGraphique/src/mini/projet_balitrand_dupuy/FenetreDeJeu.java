@@ -67,7 +67,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
     Timer temps;
     int compteur = 0;
-    int durée = 1000;
+    int durée = 1000; // initialisation du délai entre chaque nombre. Ici toutes les 1000 millisecondes.
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -179,13 +179,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 btn_chronoActionPerformed(evt);
             }
         });
-        panneau_infos_joueur.add(btn_chrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
+        panneau_infos_joueur.add(btn_chrono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jLabel10.setText("Temps : ");
-        panneau_infos_joueur.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        panneau_infos_joueur.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         lbl_tpsrestants.setText("00:00");
-        panneau_infos_joueur.add(lbl_tpsrestants, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
+        panneau_infos_joueur.add(lbl_tpsrestants, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
 
         getContentPane().add(panneau_infos_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, 330, 180));
 
@@ -302,7 +302,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btn_chronoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_chronoActionPerformed
-        DebutChrono(40);
+        DebutChrono(40); // On appel la méthode créée en n'oubliant pas de mettre le temps réglementaire en paramètre.
     }//GEN-LAST:event_btn_chronoActionPerformed
 
     /**
@@ -342,25 +342,25 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
     public void DebutChrono(int TempsRestants) {
         ActionListener action = new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (compteur == 0) {
+            public void actionPerformed(ActionEvent e) { 
+                if (compteur == 0) { // Si le compteru tombe à 0 : fin du temps
                     temps.stop();
-                    lbl_tpsrestants.setText("Fin du temps");
+                    lbl_tpsrestants.setText("Perdu, vous serez prisonnier à jamais");
                 } else if (grille.TerminerJeu() == true) {
-//Arret du temps si partie gagnée
+                //Arret du temps si partie gagnée
                     temps.stop();
                 } else {
                     lbl_tpsrestants.setText(compteur + "");
-                    compteur--;
+                    compteur--; // A chaque seconde passée le compteur diminue d'une seconde.
                 }
             }
         };
 
-        temps = new Timer(durée, action);
-        temps.setInitialDelay(0);
-        temps.start();
+        temps = new Timer(durée, action);// Création d'une nouvelle version de l'objet chronomètre avec un délai et une action
+        temps.setInitialDelay(0); // Définition du délai initial sans temps d'attente.
+        temps.start(); // On lance le chrono.
         compteur = TempsRestants;
-        //  public actionPerformed ()
+       
     }
 
     public void initialiserPartie() {
